@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/job/job",
+    "pages/my/my",
+    "pages/swiper/swiper",
+    "pages/search/search",
+    "pages/firm/firm",
+    "pages/firm_message/firm_message",
+    "pages/login/login",
+    "pages/header/header",
+    "pages/header_/header_",
+    "pages/comment/comment"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00b380",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "font-size": "20px",
+    "color": "#666666",
+    "selectedColor": "#00b380",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_act.png"
+      },
+      {
+        "pagePath": "pages/job/job",
+        "text": "职位",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index_act.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_act.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+/* pages/search/search.wxss */
+@import "../../utils/font.wxss";
+@import "../header/header.wxss";
+page{
+  background: #f5f5f5;
+}
+.center{
+  margin-top:10px;
+  padding: 0 3%;
+}
+.referral{
+  font-size: 0.8rem;
+  color: #666;
+  margin:30px 0 10px 0;
+}
+.referral-li{
+  margin: 2% 3% 0 0;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #999;
+  padding: 0 4%;
+  line-height: 28px;
+  background: #fff;
+  border-radius: 14px;
+}

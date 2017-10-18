@@ -1,0 +1,40 @@
+<!--pages/my/my.wxml-->
+ <view class="content">
+    <view class="header">
+        <image src="../../images/bg.png"></image>
+    </view>
+    <view class="login">
+        <block wx:if="{{isLogin}}">
+            <image src="../../images/my.jpg" class="head"></image>
+            <view class="nickName"><text>{{userInfo.nickName}}</text></view>  
+            <view class="intro"><text>{{intro}}</text></view> 
+        </block>
+        <block wx:else>
+            <image src="../../images/my.jpg" class="head"></image>
+            <button type="default" bindtap="cover" hover-class="none" class="login_btn"> 注册/登录</button>
+        </block>
+    </view>
+    <view class="list">
+        <block wx:if="{{isLogin}}">
+            <navigator url="{{item.url}}" open-type="navigate"
+                    hover-class="navigator-hover" class="margin-top" wx:for="{{array}}" wx:key="this">
+                <image src="{{item.src}}" class="calm"></image>{{item.message}}
+                <text class="iconfont icon-jiankuohaoxiyou"></text>
+            </navigator>
+        </block>
+        <block wx:else>
+            <view  class="margin-top" wx:for="{{array}}" wx:key="this" bindtap="cover">
+                <image src="{{item.src}}" class="calm"></image>{{item.message}}
+                <text class="iconfont icon-jiankuohaoxiyou"></text>
+            </view>
+        </block>
+    </view>
+    <button open-type="contact" class="service">进入客服会话</button> 
+    <include src="../login/login"/>
+    <view class="padding">
+    <navigator wx:if="{{isLogin}}" url="login" open-type="navigate"
+                hover-class="navigator-hover" >
+        <button size="" plain="" bindtap="modalcnt" class="light"> 退出登录</button>
+    </navigator>
+    </view>
+</view>

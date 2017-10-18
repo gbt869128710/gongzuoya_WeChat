@@ -1,0 +1,127 @@
+/* pages/about/about.wxss */
+@import "../../utils/font.wxss";
+.header{
+  width: 100%;
+  height: 100px;
+  background: #00b380;
+  box-shadow: 0px 0px 30px #00b380;
+  margin-bottom: 20px;
+}
+.header-logo{
+  width: 100%;
+  height: 40px;
+  background: #00b380;
+}
+.header-logo image{
+  margin: 0 auto;
+  display: block;
+  height: 40px;
+  width: 100px;
+}
+.btn{
+position:relative;
+display:block;
+width: 90%;
+margin: 0 auto;
+height: 30px;
+margin-top: 15px;
+padding-left:14px;
+padding-right:14px;
+box-sizing:border-box;
+font-size:0.8rem;
+line-height: 30px;
+text-align:center;
+text-decoration:none;
+border-radius:15px;
+-webkit-tap-highlight-color:transparent;
+overflow:hidden;
+color:#000000;
+background-color:#F8F8F8;
+color: #999;
+}
+.center{
+  padding: 10px;
+  display: flex;
+  align-items:center;
+  border-bottom: 1px solid #f5f5f5;
+}
+.center-namber{
+  margin-right: 2%;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.icon-namber{
+  display: block;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  background: #ccc;
+}
+.icon-zhiweiyouxuan{
+  display: block;
+  color: #DE1C0A;
+  font-size: 1rem;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+.center:nth-child(2) .icon-zhiweiyouxuan{
+  color: #F79812;
+}
+.center:nth-child(3) .icon-zhiweiyouxuan{
+  color: #F7DB12;
+}
+.center-img{
+  width: 60px;
+  height: 60px;
+  border: 1px solid #f5f5f5;
+}
+.center-img image{
+  width: 60px;
+  height: 60px;
+}
+.center-msg{
+  flex: 1;
+  margin-left: 5%;
+}
+.center-name{
+  display: inline-block;
+  width: 75%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+}
+.icon-hot{
+  float: right;
+  color: #ff0000;
+}
+.center-city{
+  font-size: 0.8rem;
+  color: #999;
+}
+.center-msg-bottom{
+  font-size: 0.8rem;
+  color: #999;
+}
+.center-line{
+  margin: 0 2%;
+  color: #ddd;
+}
+.center-namb{
+  color: #00b380;
+  font-size: 0.7rem;
+}
+.footer{
+  text-align: center;
+  color: #999;
+  font-size: 0.7rem;
+  line-height: 40px;
+}

@@ -1,0 +1,189 @@
+<!--pages/firm_message/firm_message.wxml-->
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px;width: {{windowWidth}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+<block wx:for="{{array}}" wx:for-item="itemName" wx:key="this">
+    <view class="content" wx:if="{{index==title}}" touchmove="handleTap">
+        <view class="firm-top">
+            <view class="firm-top-left">
+                <image src='{{itemName.img}}'></image>
+            </view>
+            <view class="firm-top-right">
+                <view class="firm-name">{{itemName.name}}<image src='http://nanjing.gongzuoya.com/app/template/member/com/images/gzyrz.png'></image></view>
+                <view class="firm-message">
+                    <text class='center-city'>{{itemName.city}}</text>
+                    <text class='center-city'>{{itemName.msg}}</text>
+                    <text class='center-city'>{{itemName.nature}}</text>
+                    <text class='center-city'>{{itemName.people}}</text>
+                </view>
+            </view>
+        </view>
+		<view class="firm-history">
+            <view class="firm-history-top">历史访问<text class='center-number'>{{hot}}</text>，今日访客：</view>
+            <view class="firm-history-bottom">
+			    <!--<block wx:for="{{}}" wx:if="{{index < 6}}" wx:key="this">-->
+					<view class="firm-history-head" wx:if="{{userInfo}}">
+						<image src='{{userInfo.avatarUrl}}' class="head"></image>
+					</view>
+				<!--</block>-->
+				<view class="firm-history-more">
+					<text class='iconfont icon-shenglvehao'></text>
+				</view>
+                <view class="praise" bindtap="bindshow">
+                    <block wx:if="{{homepage}}">
+                        <text class='iconfont icon-xin'></text>
+                        <image src='../../images/red.png' class="praise-img"></image>
+                        <text class="praise-number">{{itemName.praise}}</text>
+                    </block>
+                    <block wx:else>
+                        <text class='iconfont icon-xin h'></text>
+                        <image src='../../images/red.png' class="praise-img"></image>
+                        <text class="praise-number">{{itemName.praise+1}}</text>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <swiper indicator-dots="true" circular="true" autoplay="true" interval="2000" duration="500" class="ppt">
+            <block>
+				<swiper-item wx:for="{{itemName.ppt}}" data-index="{{index}}" wx:key="this" bindtap="ppt">
+                    <image src='{{item}}' class="swiper-img"></image>
+				</swiper-item>
+			</block>
+        </swiper>
+        <block>
+            <view class="firm-bottom">
+				<view class="firm-bottom-tab {{scrollTop1>400?'h':''}}">
+					<block wx:for="{{referral}}" wx:key="this">
+						<view class='firm-bottom-ul' id='{{index}}' bindtap="tapName">
+							<block wx:if="{{index==tabid}}">
+								<view class='firm-bottom-li h'>{{item}}</view>
+							</block>
+							<block wx:else>
+								<view class='firm-bottom-li' bindtap="tapshow">{{item}}</view>
+							</block> 
+						</view>
+					</block>
+				</view>
+				<block wx:if="{{tabtrue}}">
+					<view class="tabshow {{scrollTop1>400?'h':''}}">
+						<view class='line'>
+							<view class='you'>公司介绍</view>
+						</view>
+						<view class="firm-bottom-referral {{show?'h':''}}">
+							<view class='firm-message-bottom' wx:for="{{itemName.message}}" wx:key="this">{{item}}</view>
+						</view>
+						<view class="{{show?'three':'three-all'}}" bindtap="bindViewbottom">
+							<view class="{{show?'three-bottom':'three-top'}}"></view>
+						</view>
+						<view class='line'>
+							<view class='you'>面试评价</view>
+						</view>
+						<view class='evaluate'>综合评分<text class="evaluate_number">4.3</text></view>
+						<block wx:for="{{interview}}" wx:for-item="itemName" wx:key="this" wx:if="{{index<2}}">
+							<view class="firm-bottom-interview">
+								<view class='evaluate-left' >
+									<image src='{{itemName.img}}'></image>
+								</view>
+								<view class="evaluate-right">
+									<view class='evaluate-right-top'>
+										<view class='calm-top'>{{itemName.name}}<image class="five" wx:for="{{itemName.five}}" wx:key="this" src='http://www.douf.com.cn/catalog/view/javascript/v_nav/images/starsy.png'></image></view>
+										<view class='site_city'><view class='site_job'>面试职位：{{itemName.job}}</view><text class="site_time">{{itemName.time}}</text></view>
+									</view>
+									<view class='evaluate-right-list'>
+										<view class='evaluate-list' wx:for="{{itemName.list}}" wx:key="this">{{item}}</view>
+									</view>
+									<view class='appraise'>
+										<view class="appraise-list {{(showh && index==tabidh) ? '' : 'h'}}">{{itemName.evaluate}}</view>
+										<view class='open' bindtap="bindViewbottomh" id='{{index}}'>
+											<view class="{{(showh && index==tabidh) ? 'three-top' : 'three-bottom'}} h"></view>
+											<text>{{(showh && index==tabidh) ? '收起' : '展开'}}</text>
+										</view>
+									</view>
+								</view>
+							</view>
+						</block>
+						<navigator url="../comment/comment" hover-class="none">查看全部{{interview.length}}条评论</navigator>
+						<view class='line'>
+							<view class='you'>公司地址</view>
+						</view>
+						<view class="firm-bottom-city">
+							<block wx:for="{{itemName.land}}" wx:key="this">
+								<view class="firm-bottom-land" bindtap="land" id="{{index}}">
+									<view class='ranking'>
+										<text class="iconfont icon-dingwei1"><text class="ranking-number">{{index + 1}}</text></text>
+									</view>
+									<view class='site'>
+										<view class='calm'>{{item.site}}<text class="iconfont icon-jiankuohaoxiyou"></text></view>
+										<view class='site_city'>{{item.site_city}}</view>
+									</view>
+								</view>
+							</block>
+							<view class='powered'>Powered by gongzuoya.com</view>
+						</view>
+					</view>
+				</block>
+				<block wx:else>
+					<view class="tabshow {{scrollTop1>400?'h':''}}">
+						<view class="center" wx:for="{{job}}" wx:key="this">
+							<view class='center-msg'>
+								<view class='center-msg-top'>
+									<text class='center-job'>{{item.job}}</text>
+									<text class='center-money'>{{item.money}}</text>
+								</view>
+								<view class='center-msg-bottom'>
+									<text class='center-job-city'>{{item.city}}</text>
+									<text class='center-job-city'>{{item.time}}</text>
+									<text class='center-job-city'>{{item.record}}</text>
+									<text class='center-issue'>1天前发布</text>
+								</view>
+							</view>
+						</view>
+					</view>
+					<view class='footer'>没有更多了</view>
+				</block>
+            </view>
+        </block>
+    </view>
+</block>
+
+</scroll-view>
+
+<view class="canvas">
+	<canvas canvas-id="myCanvas" id="myCanvas">
+	</canvas>
+	<canvas canvas-id="myCanvas-two" id="myCanvas-two">
+	</canvas>
+</view>
+<view class='share-small' bindtap="actionSheetTap" wx:if="{{tabtrue}}">
+	<text class='iconfont icon-fenxiang'>分享</text>
+</view>
+
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share' open-type="share">
+			<image src='../../images/10.png'></image>
+			<view>转发给好友或群聊</view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share' bindtap="friend" >
+			<image src='../../images/40.png'></image>
+			<view>生成朋友圈分享图</view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share'  bindtap="public" >
+			<image src='../../images/30.png'></image>
+			<view><view>生成公众号文章分享图</view><view class="font">此图片适合插入到微信公众号文章里</view></view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share'  bindtap="two" >
+			<image src='../../images/20.png'></image>
+			<view>生成二维码</view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+  <action-sheet-cancel >取消</action-sheet-cancel>
+</action-sheet>

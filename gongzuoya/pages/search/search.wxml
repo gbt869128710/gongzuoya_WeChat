@@ -1,0 +1,12 @@
+<!--pages/search/search.wxml-->
+<include src="../header/header"/>
+<view class='center'>
+  <view class='referral'>历史</view>
+  <view>
+    <text class='referral-li' wx:for="{{referral}}" wx:key="this">{{referral[index]}}</text>
+  </view>
+  <view class='referral'>猜你要搜</view>
+  <view>
+    <text class='referral-li' wx:for="{{referral}}" wx:key="this">{{referral[index]}}</text>
+  </view>
+</view>

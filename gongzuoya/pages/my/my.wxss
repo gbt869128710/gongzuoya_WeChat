@@ -1,0 +1,117 @@
+/* pages/doufu/doufu.wxss */
+@import "../../utils/font.wxss";
+@import "../login/login.wxss";
+page{
+  background: #fafafa;
+}
+.content{
+  width: 100%;
+}
+.header{
+  width: 100%;
+  background: #fff;
+}
+.header image{
+  margin-top: -30px;
+  width:100%;
+}
+.head{
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #00b380;
+}
+.nickName{
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: #fff;
+}
+.nickName text{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.intro{
+  position: absolute;
+  top: 130px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #f5f5f5;
+}
+.intro text{
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.login_btn{
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -55px;
+  width: 110px;
+  height: 30px;
+  background: #91eac5;
+  font-size: 14px;
+  line-height: 30px;
+  border-radius: 18px;
+}
+button[type="default"] {
+  color:#00b380;
+  background-color:#91eac5;
+
+}
+.list{
+  padding-left: 10px;
+  background: #fff;
+}
+.margin-top{
+  width: 95%;
+  padding-right: 5%;
+  border-bottom: 1px solid #eee;
+  line-height: 40px;
+  font-size: 0.7rem;
+  color: #666;
+}
+.calm{
+  float: left;
+  margin: 10px 10px 0 0;
+  width: 15px;
+  height: 16px;
+  vertical-align:middle;
+}
+.icon-jiankuohaoxiyou{
+  float: right;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+.service{
+  margin-top: -40px;
+  height: 40px;
+  width: 100%;
+  overflow: inherit;
+  opacity: 0;
+}
+.light{
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #666;
+  background: #fff;
+}

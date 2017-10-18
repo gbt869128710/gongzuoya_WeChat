@@ -1,0 +1,11 @@
+<!--pages/login/login.wxml-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view> 
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}"> 
+    <view class="drawer_title">登录或注册工作呀</view> 
+        <view class="drawer_content"> 
+            <button type="primary"> 微信账号快速登录</button> 
+            <button class="phone"> 手机号注册/登录</button> 
+            <view class="rest">其他方式登录</view> 
+        </view> 
+    <view class="btn_ok" bindtap="powerDrawer" data-statu="close">取消</view> 
+</view>

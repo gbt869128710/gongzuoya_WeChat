@@ -1,0 +1,17 @@
+<!--pages/header/header.wxml-->
+<form bindsubmit='submitProduct'>
+  <view class='nav'>
+    <view class='selectCity'>
+      <picker name='cityIndex' value='{{index}}' bindchange='changeIndex' range='{{array}}'>
+        <view class='picker'>{{array[index]}}<text class='iconfont icon-xiala'></text></view>
+      </picker>
+    </view>
+     <view class='inputValue'>
+      <text class='iconfont icon-search'></text>
+      <input name="productName" placeholder="" />
+    </view>
+    <view class='btnSearch' bindtap="bindViewtext">
+      <text class='cancel'>取消</text>
+    </view> 
+  </view>
+</form>

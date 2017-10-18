@@ -1,0 +1,235 @@
+/**index.wxss**/
+@import "../../utils/font.wxss";
+@import "../login/login.wxss";
+
+.container {
+  height: 100%;
+  background: #fafafa;
+} 
+.header{
+  width: 100%;
+  height: 200px;
+  background: #00b380;
+  overflow: hidden;
+}
+picker {
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 28px;
+}
+.pc{
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 28px;
+  text-align: right;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.logo {
+  width: 100%;
+}
+.logo image {
+  display: block;
+  width: 105px;
+  margin: 0 auto;
+  margin-top: 10px;
+  height:107px;
+}
+.search{
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #f1f1f1;
+  border-radius: 6px;
+  background: #00b380;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+form{
+  width: 100%;
+  height: 30px;
+}
+.phcolor{
+  color: #fff;
+}
+input{
+  display: block;
+  padding-left: 2%;
+  width: 90%;
+  line-height: 20px; 
+  height: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+.icon-search{
+  display: block;
+  width: 14px;
+  line-height: 30px; 
+  font-size: 14px;
+  color: #fff;
+}
+.center {
+  padding: 20px 0px 10px 0px;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+  border-radius: 5px;
+  box-shadow: 0 0 25px #666666;
+  background: #fff;
+}
+swiper{
+  height: 130px;
+}
+.ppt{
+  width:calc(100% / 3);
+  float:left;
+}
+.img{
+  background: url(http://www.gongzuoya.com/app/template/wap/images/wap_index.png) no-repeat;
+  background-size: 750px;
+  margin: 10px auto;
+  width: 48px;
+  height: 48px;
+  background-position: -95px -11px;
+}
+swiper-item:nth-child(1) navigator:nth-child(1) .img{
+  background-position: -22px -11px;
+}
+swiper-item:nth-child(1) navigator:nth-child(2) .img{
+  background-position: -95px -11px;
+}
+swiper-item:nth-child(1) navigator:nth-child(3) .img{
+  background-position: -240px -11px;
+}
+swiper-item:nth-child(2) navigator:nth-child(1) .img{
+  background-position: -457px -11px;
+}
+swiper-item:nth-child(2) navigator:nth-child(2) .img{
+  background-position: -530px -11px;
+}
+swiper-item:nth-child(2) navigator:nth-child(3) .img{
+  background-position: -167px -11px;
+}
+swiper-item:nth-child(3) navigator:nth-child(1) .img{
+  background-position: -385px -11px;
+}
+swiper-item:nth-child(3) navigator:nth-child(2) .img{
+  background-position: -603px -11px;
+}
+swiper-item:nth-child(3) navigator:nth-child(3) .img{
+  background-position: -675px -11px;
+}
+.swiper-item{
+  text-align: center;
+}
+.item-avatar{
+  padding: 10px;
+  background: #fff;
+}
+.text-center{
+  font-size: 0.8rem;
+  text-align: center;
+}
+.row{
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  
+}
+.button-energized{
+  font-size: 16px;
+  line-height: 40px;
+  display: inline-block;
+  width: 110px;
+  height: 40px;
+  margin-top: 15px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  background: #00b380;
+  border: 1px solid #00b380;
+}
+.button-energized:nth-child(2){
+  margin-left: 20px;
+  background: #7b72e9;
+  border: 1px solid #7b72e9;
+}
+.wap_index_main_div {
+  background: #fff;
+  margin: 10px 0px;
+  padding: 0px 20px;
+}
+.wap_index_main_div_top {
+  white-space: nowrap;
+  line-height: 55px;
+}
+.wap_index_main_div_top_img {
+  position: relative;
+  top: 12px;
+  width: 30px;
+  height: 40px;
+  display: inline-block;
+  background: url(http://nanjing.gongzuoya.com/app/template/wap/images/wap_index_main_div_top_img.png) no-repeat;
+  background-size: 130px;
+}
+.wap_index_main .wap_index_main_div:nth-child(1) .wap_index_main_div_top .wap_index_main_div_top_img{
+  background-position: -2px 5px;
+}
+.wap_index_main .wap_index_main_div:nth-child(2) .wap_index_main_div_top .wap_index_main_div_top_img{
+  background-position: -45px 5px;
+}
+.wap_index_main .wap_index_main_div:nth-child(3) .wap_index_main_div_top .wap_index_main_div_top_img{
+  background-position: -97px 5px;
+}
+.wap_index_main_div_top .h3 {
+  letter-spacing: 3px;
+  display: inline-block;
+  text-indent: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.wap_index_main_div_top_border {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right,#fafafa, #d5d5d5,#fafafa, #d5d5d5,#fafafa);
+  display: block;
+}
+.wap_index_main_div_bottom .ul {
+  margin-top: 10px;
+  overflow:hidden;
+}
+.wap_index_main_div_bottom .li {
+  float: left;
+  line-height: 28px;
+}
+.wap_index_main_div_bottom .a {
+  border-right: 1px solid #f1f1f1;
+  color: #999;
+  padding: 0px 8px;
+  font-size: 0.8rem;
+}
+.view_all {
+  text-align: right;
+  letter-spacing: 2px;
+  margin-right: 15px;
+  color: #555;
+  line-height: 35px;
+}
+.view_all navigator{
+  color: #555;
+  font-size: 0.8rem;
+}

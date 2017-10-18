@@ -1,0 +1,38 @@
+<!--pages/firm/firm.wxml-->
+<view class="header">
+  <view class='header-logo'>
+    <image src='../../images/logo.png'></image>
+  </view>
+  <form bindtap="bindViewTap" class='btn'>
+    <text class='iconfont icon-search'>搜索公司/职位</text>
+  </form>
+</view>
+<view class='content'>
+  <block wx:for="{{array}}" wx:key="this">
+    <navigator class="center" url="../firm_message/firm_message?title={{index}}" hover-class="none">
+      <view class='center-namber'>
+        <text class='iconfont icon-zhiweiyouxuan' wx:if="{{index < 3}}"></text>
+        <text class='iconfont icon-namber' wx:else>{{index + 1}}</text>
+      </view>
+      
+      <view class='center-img'>
+        <image src='{{item.img}}'></image>
+      </view>
+      <view class='center-msg'>
+        <view class='center-msg-top'>
+          <text class='center-name'>{{item.name}}</text>
+          <text class='iconfont icon-hot'><text class='center-city'>{{item.hot}}</text></text>
+        </view>
+        <view class='center-msg-bottom'>
+          <text class='center-city'>{{item.city}}</text>
+          <text class='center-line'>|</text>
+          <text class='center-city'>{{item.msg}}</text>
+          <text class='center-line'>|</text>
+          <text class='center-namb'>{{item.namber}}</text>
+          <text class='center-city'>个在招职位</text>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>
+<view class='footer'>没有更多了</view>

@@ -1,0 +1,8 @@
+<!--pages/header_/header_.wxml-->
+<!--<view class='search'>-->
+    <form  class='search' bindsubmit='submitProduct'>
+        <!--<input placeholder-class="phcolor"  name="productName" placeholder="请输入职位关键字，如：会计..." value='{{tabvalue}}' />-->
+        <view class='iconfont icon-search'></view>
+        <view class='iconfont icon-search'></view>
+    </form>
+<!--</view>-->

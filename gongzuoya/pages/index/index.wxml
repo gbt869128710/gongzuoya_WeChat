@@ -1,0 +1,69 @@
+<!--index.wxml-->
+<view class="container">
+	<view class='header'>
+		<picker name='cityIndex' value='{{index}}' range='{{array}}'>
+		<text class='picker'><text class='iconfont icon-dingwei'></text>{{array[index]}}站</text>
+		</picker>
+		<block wx:if="{{isLogin}}">
+			<view class='pc'>{{userInfo.nickName}}</view>
+		</block>
+		<block wx:else>
+			<view class='pc' bindtap="cover">登录/注册</view>
+		</block>
+		<view class='logo'>
+		<image src="{{src}}"></image>
+		</view>
+		<form bindsubmit='submitProduct'>
+			<view class='search'>
+				<input placeholder-class="phcolor"  name="productName" placeholder="请输入职位关键字，如：会计..." value='{{tabvalue}}' />
+				<text class='iconfont icon-search'></text>
+			</view>
+		</form>
+	</view>
+  	<view class='center'>
+		<view class="page-body">
+		<view class="page-section page-section-spacing swiper">
+			<swiper indicator-dots="{{indicatorDots}}" circular="true"
+			autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<block wx:for="{{referral}}" wx:for-item="itemName" wx:key="this">
+				<swiper-item>
+					<block  wx:for="{{itemName.ppt}}" wx:key="this">
+						<navigator url="{{item.href}}" class="ppt" bindtap="url" hover-class="none">
+							<view class="img"></view>
+							<view class="swiper-item">{{item.name}}</view>
+						</navigator>
+					</block>
+				</swiper-item>
+			</block>
+			</swiper>
+		</view> 
+		</view>
+ 	</view>
+	<!--<view class="item-avatar" wx:if="{{!isLogin}}">
+		<view class="text-center">您尚未登录，马上登录轻松管理信息</view>
+		<view class="row">
+			<navigator url="login" open-type="navigate" hover-class="none" class="button-energized">登录
+			</navigator>
+			<navigator url="register" open-type="navigate" hover-class="none" class="button-energized ">注册
+			</navigator>
+		</view>
+	</view> -->
+	<view class="wap_index_main">
+		<view class="wap_index_main_div" wx:for="{{bottom}}" wx:for-item="itemName" wx:key="this">
+			<view class="wap_index_main_div_top">
+				<view class="wap_index_main_div_top_img"></view>
+				<text class="h3">{{itemName.name}}</text>
+			</view>
+			<view class="wap_index_main_div_top_border"></view>
+
+			<view class="wap_index_main_div_bottom">
+				<view class="ul">
+					<view wx:for="{{itemName.message}}" class="li" wx:key="this"><navigator class="a" hover-class="none" url="{{item.href}}">{{item.jobs}}
+					</navigator></view>
+				</view>
+			</view>
+			<view class="fr view_all"><navigator url="http://nanjing.gongzuoya.com/wap/index.php?c=job" hover-class="none">查看全部>></navigator></view>
+		</view>
+	</view>
+</view>
+<include src="../login/login"/>
