@@ -1,6 +1,5 @@
-/* pages/doufu/doufu.wxss */
+/* pages/my/my.wxss */
 @import "../../utils/font.wxss";
-@import "../login/login.wxss";
 page{
   background: #fafafa;
 }
@@ -23,7 +22,13 @@ page{
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  background: #dae3e2;
   border: 3px solid #00b380;
+}
+.head image{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
 .nickName{
   position: absolute;

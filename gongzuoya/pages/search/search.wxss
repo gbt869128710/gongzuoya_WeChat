@@ -1,8 +1,59 @@
 /* pages/search/search.wxss */
 @import "../../utils/font.wxss";
-@import "../header/header.wxss";
 page{
   background: #f5f5f5;
+}
+.nav{
+  width: 100%;
+  height: 45px;
+  padding-bottom: 10px;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.selectCity{
+  float: left;
+  overflow: hidden;
+  padding: 0 3%;
+  width: 11%;
+  line-height:1.8rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  color: #666;
+}
+.inputValue{
+  float: left;
+  padding: 0 2%;
+  margin-top: 15px;
+  width: 64%;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-search{
+  color: #999;
+  font-size: 0.9rem;
+  line-height: 30px;
+}
+.inputValue input{
+  width: calc(98% - 30px);
+  line-height: 20px;
+  font-size: 14px;
+  color: #666;
+  padding:0 2%;
+}
+.btnSearch{
+  float: right;
+  margin:0 3% 0 0;
+}
+.btnSearch .cancel{
+  border: none;
+  color: #666;
+  font-size: 0.8rem;
+  line-height:1.8rem;
 }
 .center{
   margin-top:10px;
@@ -13,6 +64,10 @@ page{
   color: #666;
   margin:30px 0 10px 0;
 }
+.icon-lajitong{
+  float: right;
+  font-size: 1.2rem;
+}
 .referral-li{
   margin: 2% 3% 0 0;
   display: inline-block;
@@ -22,4 +77,21 @@ page{
   line-height: 28px;
   background: #fff;
   border-radius: 14px;
+}
+.hunt-all{
+  width: 100%;
+  background: #fff;
+}
+.hunt{
+  margin: 0 10px;
+  line-height: 50px;
+  border-bottom: 1px solid #eee;
+}
+.hunt-li{
+  font-size: 0.8rem;
+  color: #999;
+}
+.icon-search1{
+  margin-right: 15px;
+  font-size: 0.8rem;
 }

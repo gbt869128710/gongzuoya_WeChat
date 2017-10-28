@@ -1,0 +1,188 @@
+<!--pages/resume/resume.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+    <view class="my">
+        <view class="my-top">
+            <view class="my-top-left">
+                <view class="my-top-left-top">
+                    <text class="my-top-left-name">{{itemname.name}}</text>
+                    <navigator url="../my_personal/my_personal" hover-class="none" class="iconfont icon-bianji"><text class="redact">编辑</text></navigator>
+                </view>
+                <view class="my-top-left-center" wx:if="{{itemname.city}}">{{itemname.city[cityid]}} / {{itemname.record[record_number]}} / {{itemname.time[time_number]}} / {{itemname.sex[sex_number]}} / {{itemname.age}}</view>
+                <view class="my-top-left-footer" wx:if="{{itemname.referral}}">{{itemname.referral}}</view>
+            </view>
+            <view class="my-top-right">
+                <image src="../../images/my-head.png"></image>
+            </view>
+        </view>
+        <view class="my-center">
+            <view class="my-center-top">
+                <image src="../../images/tc.png" class="tc">
+                </image>
+                <view class="phone">{{phone}}</view>
+            </view>
+            <view class="my-center-top" wx:if="{{itemname.email}}">
+                <image src="../../images/em.png" class="tc">
+                </image>
+                <view class="phone">{{itemname.email}}</view>
+            </view>
+        </view>
+        <view class="my-footer">
+            <view class="my-footer-left">目前状态</view>
+            <view class="my-footer-right" bindtap="now">
+                <text class="now" wx:if="{{itemname.now}}">{{itemname.now[now_number]}}</text>
+                <text class="iconfont icon-jiankuohaoxiyou"></text>
+            </view>
+        </view>
+    </view>
+    <view class="job">
+        <view class="my-footer">
+            <view class="my-footer-left">求职意向</view>
+            <navigator url="../my_intension/my_intension" hover-class="none" class="edit">编辑</navigator>
+        </view>
+        <view class="job-top">
+            <view class="job-top-name" wx:if="{{itemname.job}}">{{itemname.trade}} · {{itemname.job}}</view>
+            <view class="job-top-expect" wx:if="{{itemname.city}}">{{itemname.city[cityid]}} / {{itemname.money}}</view>
+        </view>
+    </view>
+	<view class="education">
+        <view class="my-footer-left" wx:if="{{itemname.education}}">教育经历</view>
+		<block wx:for="{{itemname.education}}" wx:key="this">
+			<view class="education-top">
+				<view class="education-top-left">
+					<text class="iconfont icon-xuexiao"></text>
+				</view>
+				<view class="education-top-right">
+					<view class="school">
+						<view class="job-top-name" wx:if="{{item.school}}">{{item.school}}</view>
+						<view class="edit" bindtap="edit_education">编辑</view>
+					</view>
+					<view class="job-top-expect" wx:if="{{item.academy}}">{{item.academy}} / {{itemname.record[record_number]}} / {{item.major}}</view>
+					<view class="job-top-expect" wx:if="{{item.graduate}}">{{item.graduate}}毕业</view>
+				</view>
+			</view>
+		</block>
+		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加教育经历</view>
+    </view>
+    <view class="education">
+        <view class="my-footer-left" wx:if="{{itemname.work}}">工作经历</view>
+		<block wx:for="{{itemname.work}}" wx:key="this">
+			<view class="education-top">
+                <view  class="education-top-center">
+                    <view class="education-top-left">
+                        <text class="iconfont icon-gongsi"></text>
+                    </view>
+                    <view class="education-top-right">
+                        <view class="school">
+                            <view class="job-top-name" wx:if="{{item.job}}">{{item.job}}</view>
+                            <view class="edit" bindtap="edit_education">编辑</view>
+                        </view>
+                        <view class="job-top-expect" wx:if="{{item.firm}}">{{item.firm}} / {{item.section}}</view>
+                        <view class="job-top-expect" wx:if="{{item.start}}">{{item.start}} 至 {{item.over}}</view>
+                    </view>
+                </view>
+                <view class="education-content" wx:if="{{item.content}}">
+                    <view class="education-content-top">工作内容</view>
+                    <view class="my-footer-right">{{item.content}}</view>
+                </view>
+			</view>
+		</block>
+		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加工作经历</view>
+    </view>
+    <view class="education">
+        <view class="my-footer">
+            <view class="my-footer-left">自我介绍</view>
+            <view class="edit" bindtap="edit">编辑</view>
+        </view>
+        <view class="ego-top" wx:if="{{itemname.ego_}}">
+            <block wx:for="{{itemname.ego_}}" wx:key="this">
+                <view class="ego">{{item}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="education">
+        <view class="my-footer">
+            <view class="my-footer-left">我的技能</view>
+            <view class="edit" bindtap="edit">编辑</view>
+        </view>
+        <view class="ego-top" wx:if="{{itemname.skill_}}">
+            <block wx:for="{{itemname.skill_}}" wx:key="this">
+                <view class="ego">{{item}}</view>
+            </block>
+        </view>
+    </view>
+    <view class="education">
+        <view class="my-footer-left" wx:if="{{itemname.project}}">项目经验</view>
+		<block wx:for="{{itemname.project}}" wx:key="this">
+			<view class="education-top">
+                <view  class="education-top-center">
+                    <view class="education-top-right project">
+                        <view class="school">
+                            <view class="job-top-name project-name" wx:if="{{item.job}}">{{item.firm}}</view>
+                            <view class="edit" bindtap="edit_education">编辑</view>
+                        </view>
+                        <view class="job-top-expect" wx:if="{{item.firm}}">{{item.job}}</view>
+                        <view class="job-top-expect" wx:if="{{item.start}}">{{item.start}} 至 {{item.over}}</view>
+                    </view>
+                </view>
+                <view class="education-content" wx:if="{{item.content}}">
+                    <view class="education-content-top">项目内容</view>
+                    <view class="my-footer-right">{{item.content}}</view>
+                </view>
+			</view>
+		</block>
+		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加项目经验</view>
+    </view>
+    <view class="education">
+        <view class="my-footer-left" wx:if="{{itemname.works}}">我的作品</view>
+		<block wx:for="{{itemname.works}}" wx:key="this">
+			<view class="education-top">
+                <view class="education-top-right project">
+                    <view class="school">
+                        <view class="job-top-name project-name" wx:if="{{item.firm}}">{{item.firm}}</view>
+                        <view class="edit" bindtap="edit_education">编辑</view>
+                    </view>
+                    <swiper indicator-dots="true" circular="true" autoplay="true" interval="2000" duration="500" class="ppt">
+                        <block>
+                            <swiper-item wx:for="{{item.ppt}}" data-index="{{index}}" wx:key="this" bindtap="ppt">
+                                <image src='{{item}}' class="swiper-img"></image>
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                </view>
+			</view>
+		</block>
+		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加项目经验</view>
+    </view>
+    <view class="education">
+        <view class="my-footer-left" wx:if="{{itemname.cultivate}}">培训经历</view>
+		<block wx:for="{{itemname.cultivate}}" wx:key="this">
+			<view class="education-top">
+                <view  class="education-top-center">
+                    <view class="education-top-right project">
+                        <view class="school">
+                            <view class="job-top-name project-name" wx:if="{{item.job}}">{{item.firm}}</view>
+                            <view class="edit" bindtap="edit_education">编辑</view>
+                        </view>
+                        <view class="job-top-expect" wx:if="{{item.firm}}">{{item.job}}</view>
+                        <view class="job-top-expect" wx:if="{{item.start}}">{{item.start}} 至 {{item.over}}</view>
+                        <view class="my-footer">
+                            <view class="my-footer-left">掌握程度</view>
+                            <view class="my-footer-right" bindtap="grasp">
+                                <text class="now" wx:if="{{itemname.grasp}}">{{itemname.grasp[grasp_number]}}</text>
+                                <text class="iconfont icon-jiankuohaoxiyou"></text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="education-content" wx:if="{{item.content}}">
+                    <view class="education-content-top">培训内容</view>
+                    <view class="my-footer-right">{{item.content}}</view>
+                </view>
+			</view>
+		</block>
+		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加培训经历</view>
+    </view>
+    <view class='powered'>Powered by gongzuoya.com</view>
+</block>
+
+

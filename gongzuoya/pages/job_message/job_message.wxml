@@ -1,0 +1,177 @@
+<!--pages/job_message/job_message.wxml-->
+<block wx:for="{{job}}" wx:for-item="itemName" wx:key="this">
+    <view class="content" wx:if="{{itemName.id==title}}" touchmove="handleTap">
+        <view class="firm-top">
+            <view class="firm-top-center">
+                <view class="firm-name">{{itemName.job}}</view>
+                <view class="firm-message">
+                    <text class='firm-center-money'>{{itemName.money}}</text>
+                    <text class='center-city'>{{itemName.city}}{{itemName.site}}</text>
+                    <text class='center-city'>{{itemName.time}}</text>
+                    <text class='center-city'>{{itemName.record}}</text>
+                    <text class='center-city'>{{itemName.jobs}}</text>
+                </view>
+                <view class="firm-message">
+                    <text class='firm-tempt'>职位诱惑：</text>
+                    <block wx:for="{{itemName.tempt}}" wx:key="this">
+                        <text class='firm-tempt'>{{item}}</text>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <block wx:for="{{firm}}"  wx:for-item="i" wx:key="this">
+            <view class="firm-top firm-top-margin" wx:if="{{itemName.id==i.id}}">
+                <view class="firm-top-left">
+                    <image src='{{i.img}}'></image>
+                </view>
+                <view class="firm-top-right">
+                    <view class="firm-name"><navigator url="../firm_message/firm_message?title={{i.id}}" hover-class="none">{{i.name}}</navigator><image src='http://nanjing.gongzuoya.com/app/template/member/com/images/gzyrz.png'></image></view>
+                    <view class="firm-message">
+                        <text class='center-city'>{{i.city}}</text>
+                        <text class='center-city'>{{i.msg}}</text>
+                        <text class='center-city'>{{i.nature}}</text>
+                        <text class='center-city'>{{i.people}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="firm-bottom" wx:if="{{itemName.id==i.id}}">
+				
+                <view class="tabshow">
+                    <view class='line'>
+                        <view class='you'>职位描述</view>
+                    </view>
+                    <view class='describe'>
+                        <view class='describe-list' wx:for="{{itemName.describe}}" wx:key="this">{{item}}</view>
+                    </view>
+                    <view class="firm-bottom-referral">
+                        <view class='firm-message-bottom' wx:if="{{itemName.duty}}">岗位职责：</view>
+                        <view class='firm-message-bottom' wx:for="{{itemName.duty}}" wx:key="this">{{item}}</view>
+                        <view class='firm-message-bottom' wx:if="{{itemName.condition}}">任职要求：</view>
+                        <view class='firm-message-bottom' wx:for="{{itemName.condition}}" wx:key="this">{{item}}</view>
+                        <view class='firm-message-bottom' wx:if="{{itemName.priority}}">岗位待遇：</view>
+                        <view class='firm-message-bottom' wx:for="{{itemName.priority}}" wx:key="this">{{item}}</view>
+                    </view>
+                    <view class='line'>
+                        <view class='you'>公司地址</view>
+                    </view>
+                    <view class="firm-bottom-city">
+                        <block wx:for="{{i.land}}" wx:key="this">
+                            <view class="firm-bottom-land" bindtap="land" id="{{index}}" wx:if="{{index<1}}">
+                                <view class='ranking'>
+                                    <text class="iconfont icon-dingwei"></text>
+                                </view>
+                                <view class='site'>
+                                    <view class='calm'>{{item.site}}<text class="iconfont icon-jiankuohaoxiyou"></text></view>
+                                    <view class='site_city'>{{item.site_city}}</view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            
+                <view class="tabshow tabshow-bottom">
+                    <view class='line'>
+                        <view class='you'>推荐职位</view>
+                    </view>
+					<block  wx:for="{{job}}" wx:key="this">
+                  		<view class="center">
+                            <view class='center-msg'>
+                                <view class='center-msg-top'>
+                                    <text class='center-job'>{{item.job}}</text>
+                                    <text class='center-money'>{{item.money}}</text>
+                                </view>
+                                <view class='center-msg-bottom'>
+                                    <text class='center-job-city'>{{item.city}}</text>
+                                    <text class='center-job-city'>{{item.time}}</text>
+                                    <text class='center-job-city'>{{item.record}}</text>
+                                    <text class='center-issue'>1天前发布</text>
+                                </view>
+                            </view>
+                            <block wx:for="{{firm}}"  wx:for-item="i" wx:key="this">
+                                <view class="firm-top firm-top-margin firm-top-border" wx:if="{{item.id==i.id}}">
+                                    <view class="firm-top-left">
+                                        <image src='{{i.img}}'></image>
+                                    </view>
+                                    <view class="firm-top-right">
+                                        <view class="firm-name">
+											<navigator url="../firm_message/firm_message?title={{i.id}}" hover-class="none">{{i.name}}</navigator>
+										</view>
+                                        <view class="firm-message">
+                                            <text class='center-city'>{{i.nature}}</text>
+                                            <text class='center-city'>{{i.people}}</text>
+                                            <text class='center-city'>{{i.msg}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                    	</view>
+					</block>
+                    <button class="look-more" bindtap="bindViewTap" hover-class="look-more-hover"> 查看更多职位 </button>
+                </view>
+                <view class='footer'></view>
+            </view>
+        </block>
+    </view>
+</block>
+
+
+<view class="canvas">
+    <!--<block wx:for="{{job}}" wx:for-item="itemName" wx:key="this">
+        <canvas canvas-id="myCanvas" id="myCanvas" wx:if="{{itemName.id==title}}">
+            <cover-view class="cover-view-job">{{itemName.job}}<cover-view class="pause">{{itemName.money}}</cover-view></cover-view>
+        </canvas>
+    </block>-->
+    <canvas canvas-id="myCanvas" id="myCanvas">
+    </canvas>
+	<canvas canvas-id="myCanvas-two" id="myCanvas-two">
+	</canvas>
+</view>
+<view class='share-fixed'>
+	<view class='share-small' bindtap="actionSheetTap">
+        <text class='iconfont icon-fenxiang fenxiang'></text>
+        <view class='fenxiang'>分享</view>
+    </view>
+    <view class='share-small' bindtap="bindtapshowshou">
+        <text class='iconfont shoucang {{showshou?"icon-xing2":"icon-xing1"}}'></text>
+        <view class='shoucang {{showshou?"":"h"}}'>{{showshou?"收藏":"已收藏"}}</view>
+    </view>
+    <view class='share-small' bindtap="bindtapsend">
+        <button type="primary" bindtap="primary"> 投递简历 </button>
+    </view>
+</view> 
+<view class="toast-center" wx:if="{{showshoutext}}">  
+    <view class="toast">  
+        <text class="toast-text">{{showshou?"已取消收藏":"收藏成功"}}</text>  
+    </view>  
+</view>  
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share' open-type="share">
+			<image src='../../images/10.png'></image>
+			<view>转发给好友或群聊</view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share' bindtap="friend" >
+			<image src='../../images/40.png'></image>
+			<view>生成朋友圈分享图</view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share'  bindtap="public" >
+			<image src='../../images/30.png'></image>
+			<view><view>生成公众号文章分享图</view><view class="font">此图片适合插入到微信公众号文章里</view></view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+	<action-sheet-item bindtap="actionSheetTap" hover-class="none">
+		<button class='share'  bindtap="two" >
+			<image src='../../images/20.png'></image>
+			<view>生成二维码</view>
+			<text class="iconfont icon-jiankuohaoxiyou"></text>
+		</button>
+	</action-sheet-item>
+  <action-sheet-cancel >取消</action-sheet-cancel>
+</action-sheet>

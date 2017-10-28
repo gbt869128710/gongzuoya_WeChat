@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
 	<view class='header'>
-		<picker name='cityIndex' value='{{index}}' range='{{array}}'>
+		<picker name='cityIndex' value='{{index}}' bindchange='changeIndex' range='{{array}}'>
 		<text class='picker'><text class='iconfont icon-dingwei'></text>{{array[index]}}站</text>
 		</picker>
 		<block wx:if="{{isLogin}}">
@@ -10,13 +10,13 @@
 		<block wx:else>
 			<view class='pc' bindtap="cover">登录/注册</view>
 		</block>
-		<view class='logo'>
-		<image src="{{src}}"></image>
+		<view class='logo-top'>
+			<image src="{{src}}"></image>
 		</view>
 		<form bindsubmit='submitProduct'>
 			<view class='search'>
-				<input placeholder-class="phcolor"  name="productName" placeholder="请输入职位关键字，如：会计..." value='{{tabvalue}}' />
-				<text class='iconfont icon-search'></text>
+				<input placeholder-class="phcolor"  name="productName" placeholder="请输入职位关键字，如：会计..." value="{{inputValue}}" bindinput="bindKeyInput" />
+				<text class='iconfont icon-search' bindtap='{{inputValue.length>0?"go":""}}'></text>
 			</view>
 		</form>
 	</view>
@@ -25,13 +25,13 @@
 		<view class="page-section page-section-spacing swiper">
 			<swiper indicator-dots="{{indicatorDots}}" circular="true"
 			autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-			<block wx:for="{{referral}}" wx:for-item="itemName" wx:key="this">
+			<block wx:for="{{referral}}" wx:for-item="itemName" wx:key="this" id="{{index}}">
 				<swiper-item>
 					<block  wx:for="{{itemName.ppt}}" wx:key="this">
-						<navigator url="{{item.href}}" class="ppt" bindtap="url" hover-class="none">
+						<view class="ppt" bindtap="{{item.bind}}" id="{{index}}" data-id="{{item.data}}">
 							<view class="img"></view>
 							<view class="swiper-item">{{item.name}}</view>
-						</navigator>
+						</view>
 					</block>
 				</swiper-item>
 			</block>
@@ -62,8 +62,7 @@
 					</navigator></view>
 				</view>
 			</view>
-			<view class="fr view_all"><navigator url="http://nanjing.gongzuoya.com/wap/index.php?c=job" hover-class="none">查看全部>></navigator></view>
+			<view class="fr view_all"><navigator url="../list/list" hover-class="none">查看全部>></navigator></view>
 		</view>
 	</view>
 </view>
-<include src="../login/login"/>

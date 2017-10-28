@@ -1,4 +1,4 @@
-// pages/about/about.js
+// pages/job/job.js
 var util = require('../../utils/util.js');
 Page({
 

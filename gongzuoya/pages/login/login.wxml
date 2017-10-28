@@ -1,11 +1,32 @@
 <!--pages/login/login.wxml-->
-<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view> 
-<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}"> 
-    <view class="drawer_title">登录或注册工作呀</view> 
+<view animation="{{animationData}}" class="center-login" wx:if="{{showModalStatus}}"> 
+    <view class="logo">
+        <view class="logo-left" wx:if="{{userInfo}}">
+            <image src='{{userInfo.avatarUrl}}' class="head-top"></image>
+        </view>
+        <view class="logo-left" wx:else>
+            <image src='../../images/my-head.png' class="head-top"></image>
+        </view>
+        <view class="logo-center">
+            <image src='../../images/log.png' class="head-top"></image>
+        </view>
+        <view class="logo-left">
+            <image src='../../images/login.png' class="headlogo"></image>
+        </view>
+    </view>
+    <view class="drawer_title">绑定手机号完成登录</view> 
+    <form bindsubmit="savePersonInfo">
         <view class="drawer_content"> 
-            <button type="primary"> 微信账号快速登录</button> 
-            <button class="phone"> 手机号注册/登录</button> 
-            <view class="rest">其他方式登录</view> 
+            <input type="number" placeholder="请输入手机号码" name="tel" value="{{tel}}" placeholder-style="color:#999"/>
         </view> 
-    <view class="btn_ok" bindtap="powerDrawer" data-statu="close">取消</view> 
+        <view class="drawer_code">
+            <view class="drawer_bottom"> 
+                <input type="number" placeholder="请输入验证码" name="code" value="{{code}}" placeholder-style="color:#999" />
+            </view>
+            <button   class="countdown" bindtap="countdown" wx:if="{{selected}}" hover-class="other-button-hover">{{second}}s </button>
+            <button  class="getphone"  bindtap="getphone" wx:if="{{selected1}}" hover-class="other-button-hover">{{get}}</button>
+        </view>
+        <button formType="submit" class="save-btn"> 确认绑定 </button>
+    </form>
+<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
 </view>

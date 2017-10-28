@@ -1,12 +1,36 @@
 <!--pages/search/search.wxml-->
-<include src="../header/header"/>
-<view class='center'>
-  <view class='referral'>历史</view>
-  <view>
-    <text class='referral-li' wx:for="{{referral}}" wx:key="this">{{referral[index]}}</text>
+<form bindsubmit='submitProduct'>
+  <view class='nav'>
+    <view class='selectCity'>
+      <picker name='cityIndex' value='{{index}}' bindchange='changeIndex' range='{{array}}'>
+        <view class='picker'>{{array[index]}}<text class='iconfont icon-jiankuohao-xi-xia'></text></view>
+      </picker>
+    </view>
+     <view class='inputValue'>
+      <text class='iconfont icon-search'></text>
+      <input name="productName" placeholder="" value="{{inputValue}}" bindinput="bindKeyInput"/>
+    </view>
+    <view class='btnSearch'>
+        <text class='cancel' bindtap='{{inputValue.length>0?"go":"back"}}'>{{inputValue.length>0?"完成":"取消"}}</text>
+    </view> 
   </view>
-  <view class='referral'>猜你要搜</view>
-  <view>
-    <text class='referral-li' wx:for="{{referral}}" wx:key="this">{{referral[index]}}</text>
+</form>
+<block wx:if="{{inputValue.length < 1}}">
+  <view class='center'>
+      <view class='referral'>历史<text class='iconfont icon-lajitong'></text></view>
+      <view>
+        <text class='referral-li' id='{{index}}' wx:for="{{referral}}" wx:key="this" bindtap="tapName">{{referral[index]}}</text>
+      </view>
+      <view class='referral'>猜你要搜</view>
+      <view>
+        <text class='referral-li' wx:for="{{referral}}" wx:key="this" bindtap="tapName">{{referral[index]}}</text>
+      </view>
   </view>
-</view>
+</block>
+<block wx:else>
+  <view class="hunt-all">
+    <block wx:for="{{referral}}" wx:key="this" wx:if="{{index<5}}">
+      <navigator class="hunt" url="../list/list?title={{referral[index]}}" id='{{index}}' hover-class="none"><text class='iconfont icon-search icon-search1'></text><text class='hunt-li'>{{item}}</text></navigator>
+    </block>
+  </view>
+</block>

@@ -1,7 +1,6 @@
 <!--pages/firm_message/firm_message.wxml-->
-<scroll-view scroll-y="true" style="height: {{windowHeight}}px;width: {{windowWidth}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-<block wx:for="{{array}}" wx:for-item="itemName" wx:key="this">
-    <view class="content" wx:if="{{index==title}}" touchmove="handleTap">
+<block wx:for="{{firm}}" wx:for-item="itemName" wx:key="this">
+    <view class="content" wx:if="{{itemName.id==title}}" touchmove="handleTap">
         <view class="firm-top">
             <view class="firm-top-left">
                 <image src='{{itemName.img}}'></image>
@@ -122,20 +121,22 @@
 				</block>
 				<block wx:else>
 					<view class="tabshow {{scrollTop1>400?'h':''}}">
-						<view class="center" wx:for="{{job}}" wx:key="this">
-							<view class='center-msg'>
-								<view class='center-msg-top'>
-									<text class='center-job'>{{item.job}}</text>
-									<text class='center-money'>{{item.money}}</text>
+						<block wx:for="{{job}}" wx:key="this">
+							<navigator class="center" url="../job_message/job_message?title={{item.id}}" hover-class="none" wx:for="{{job}}" wx:key="this">
+								<view class='center-msg'>
+									<view class='center-msg-top'>
+										<text class='center-job'>{{item.job}}</text>
+										<text class='center-money'>{{item.money}}</text>
+									</view>
+									<view class='center-msg-bottom'>
+										<text class='center-job-city'>{{item.city}}</text>
+										<text class='center-job-city'>{{item.time}}</text>
+										<text class='center-job-city'>{{item.record}}</text>
+										<text class='center-issue'>1天前发布</text>
+									</view>
 								</view>
-								<view class='center-msg-bottom'>
-									<text class='center-job-city'>{{item.city}}</text>
-									<text class='center-job-city'>{{item.time}}</text>
-									<text class='center-job-city'>{{item.record}}</text>
-									<text class='center-issue'>1天前发布</text>
-								</view>
-							</view>
-						</view>
+  							</navigator>
+						</block>
 					</view>
 					<view class='footer'>没有更多了</view>
 				</block>
@@ -144,7 +145,6 @@
     </view>
 </block>
 
-</scroll-view>
 
 <view class="canvas">
 	<canvas canvas-id="myCanvas" id="myCanvas">

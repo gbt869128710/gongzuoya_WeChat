@@ -1,4 +1,4 @@
-/* pages/about/about.wxss */
+/* pages/job/job.wxss */
 @import "../../utils/font.wxss";
 .header{
   width: 100%;

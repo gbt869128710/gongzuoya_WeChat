@@ -11,7 +11,8 @@
   <view class='you'>为你推荐的好职位</view>
 </view>
 <view class='content'>
-  <view class="center" wx:for="{{array}}" wx:key="this">
+  <block wx:for="{{array}}" wx:key="this">
+  <navigator class="center" url="../job_message/job_message?title={{item.id}}" hover-class="none">
     <view class='center-img'>
       <image src='{{item.img}}'></image>
     </view>
@@ -31,6 +32,7 @@
         <text class='center-issue'>{{item.issue}}发布</text>
       </view>
     </view>
-  </view>
+  </navigator>
+  </block>
 </view>
 <view class='footer'>没有更多了</view>

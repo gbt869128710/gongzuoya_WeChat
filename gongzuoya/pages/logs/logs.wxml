@@ -1,6 +1,2 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
-</view>
+<view class="phone_huo" bindtap="countdown" wx:if="{{selected}}">{{second}}s后重新获取</view>
+<view class="phone_huo" bindtap="getphone" wx:if="{{selected1}}">点击获取验证码</view>

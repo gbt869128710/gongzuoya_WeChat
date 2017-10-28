@@ -10,35 +10,53 @@ Page({
     autoplay: false,
     referral: [{
       ppt:[{
+        data:0,
         name:"职位",
+        bind:"Tab",
         href:"../job/job"
       },{
+        data:0,
         name:"人才",
+        bind:"url",
         href:""
       },{
+        data:0,
         name:"拍贤",
+        bind:"url",
         href:""
       }]
     },{
       ppt:[{
+        data:1,
         name:"兼职",
+        bind:"url",
         href:""
       },{
+        data:1,
         name:"头条",
+        bind:"url",
         href:""
       },{
+        data:1,
         name:"两会",
+        bind:"url",
         href:""
       }]
     },{
       ppt:[{
+        data:2,
         name:"论坛",
+        bind:"url",
         href:""
       },{
+        data:2,
         name:"公司",
+        bind:"url",
         href:"../firm/firm"
       },{
+        data:2,
         name:"课程",
+        bind:"url",
         href:""
       }]
     }],
@@ -145,45 +163,62 @@ Page({
       jobs:"招生顾问"
     }]
     }],
-      showModalStatus:false,
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+
   //地区
   changeIndex: function (e) {
-    this.setData({ index: e.detail.value })
+    this.setData({ 
+      index: e.detail.value 
+    })
   },
-  //登录弹框
+  //事件处理函数
+  
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  go: function (e) {
+    var that=this
+    wx.navigateTo({
+      url: '../list/list?title='+that.data.inputValue
+    })
+  },
+  url: function (e) {
+    var that=this
+    wx.navigateTo({
+      url: that.data.referral[e.currentTarget.dataset.id].ppt[e.currentTarget.id].href
+    })
+  },
+  Tab: function (e) {
+    var that=this
+    wx.switchTab({
+      url: that.data.referral[e.currentTarget.dataset.id].ppt[e.currentTarget.id].href
+    })
+  },
+  //登录
   cover:function(){  
-    this.setData({
-      showModalStatus:true
+    wx.navigateTo({
+      url: '../login/login'
     })
   },
-  powerDrawer:function(){  
-    this.setData({
-      showModalStatus:false
-    })
-  },
-  changeAutoplay: function (e) {
-    this.setData({
-      autoplay: !this.data.autoplay
-    })
-  },
-  intervalChange: function (e) {
-    this.setData({
-      interval: e.detail.value
-    })
-  },
-  durationChange: function (e) {
-    this.setData({
-      duration: e.detail.value
-    })
-  },
+  // powerDrawer:function(){  
+  //   this.setData({
+  //     showModalStatus:false
+  //   })
+  // },
   onLoad: function () {
+    var phone = wx.getStorageSync('phone');
+    var isLogin = wx.getStorageSync('isLogin');
+  
+    console.log(phone);
+    console.log(isLogin);
+    if(phone){
+    this.setData({phone: phone});
+    }
+    if(isLogin){
+    this.setData({isLogin: isLogin});
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -209,6 +244,22 @@ Page({
           })
         }
       })
+    }
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var phone = wx.getStorageSync('phone');
+    var isLogin = wx.getStorageSync('isLogin');
+  
+    console.log(phone);
+    console.log(isLogin);
+    if(phone){
+    this.setData({phone: phone});
+    }
+    if(isLogin){
+    this.setData({isLogin: isLogin});
     }
   },
   getUserInfo: function(e) {

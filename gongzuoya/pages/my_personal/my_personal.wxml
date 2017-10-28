@@ -1,0 +1,93 @@
+<!--pages/my_personal/my_personal.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+	<form bindsubmit="formSubmit">
+		<view class="my">
+			<view class="my-center">
+				<view class="my-center-left">真实姓名</view>
+				<view class="my-center-right">
+					<input placeholder-style="color:#999" placeholder="请输入" value="{{itemname.name}}" name="name1"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">性别</view>
+				<view class="my-center-right" bindtap="sex">
+					<text class="sex">{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">出生年月</view>
+				<view class="my-center-right">
+					<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="2017-10" bindchange="bindDateChange">
+						<view class="sex">{{date?date:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="date" value='{{date?date:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="my">
+			<view class="my-center">
+				<view class="my-center-left">最高学历</view>
+				<view class="my-center-right" bindtap="record">
+					<text class="sex">{{itemname.record[record_number]?itemname.record[record_number]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="record" value='{{itemname.record[record_number]?itemname.record[record_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">工作年限</view>
+				<view class="my-center-right">
+					<picker value="{{time_number}}" range="{{itemname.time}}" bindchange="time">
+						<view class="sex">{{itemname.time[time_number]?itemname.time[time_number]:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="time" value='{{itemname.time[time_number]?itemname.time[time_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="my">
+			<view class="my-center">
+				<view class="my-center-left">手机号码</view>
+				<view class="my-center-right">
+					<input placeholder-style="color:#999" name="tel" placeholder="请输入" value="{{itemname.phone}}"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">联系邮箱</view>
+				<view class="my-center-right">
+					<input placeholder-style="color:#999" name="email" placeholder="请输入" value="{{itemname.email}}"/>
+				</view>
+			</view>
+		</view>
+		<view class="my">
+			<view class="my-center">
+				<view class="my-center-left">所在城市</view>
+				<view class="my-center-right" bindtap="city">
+					<text class="sex">{{itemname.city[cityid]?itemname.city[cityid]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="city" value='{{itemname.city[cityid]?itemname.city[cityid]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">当前状态</view>
+				<view class="my-center-right" bindtap="now">
+					<text class="sex">{{itemname.now[now_number]?itemname.now[now_number]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="now" value='{{itemname.now[now_number]?itemname.now[now_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="referral">一句话介绍</view>
+		<view class="referral-textarea">
+			<textarea bindblur="bindTextAreaBlur" maxlength="29" value="{{inputValue}}" placeholder="说出你的心声"  bindinput="bindKeyInput"/>
+			<view class="referral-textarea-length">{{inputValue.length}}/29</view>
+			<input type="text" name="referral" value='{{inputValue}}' class="hidden"/>
+		</view>
+		<view class="button">
+			<button type="primary" formType="submit">保存</button>
+		</view>
+	</form>
+	<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</block>

@@ -1,0 +1,49 @@
+<!--pages/my_intension/my_intension.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+	<form bindsubmit="formSubmit">
+		<view class="my" id="{{index}}">
+            <view class="my-center">
+				<view class="my-center-left">{{job}}期望城市</view>
+				<navigator class="my-center-right" url="../city/city" hover-class="none">
+					<text class="sex">{{itemname.city[cityid]?itemname.city[cityid]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
+				</navigator>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">期望职业</view>
+				<navigator class="my-center-right" url="../header/header?title={{itemname.job}}" hover-class="none">
+					<text class="sex">{{itemname.job?itemname.job:"如：产品经理、Java"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="sex" value='{{itemname.job?itemname.job:"如：产品经理、Java"}}' class="hidden"/>
+			    </navigator>
+            </view>
+			<view class="my-center">
+				<view class="my-center-left">职位类型</view>
+				<view class="my-center-right" bindtap="sex">
+					<text class="sex">{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+            <view class="my-center">
+				<view class="my-center-left">期望月薪</view>
+				<view class="my-center-right" bindtap="sex">
+					<text class="sex">{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="referral">补充说明</view>
+		<view class="referral-textarea">
+			<textarea bindblur="bindTextAreaBlur" value="{{inputValue}}" placeholder="请填写补充说明"/>
+			<input type="text" name="referral" value='{{inputValue}}' class="hidden"/>
+		</view>
+		<view class="button">
+			<button type="primary" formType="submit">保存</button>
+		</view>
+	</form>
+	<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</block>
+

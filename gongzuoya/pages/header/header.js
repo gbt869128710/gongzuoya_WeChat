@@ -6,22 +6,48 @@ Page({
    */
   data: {
     array:["上海","南京","北京"],
-    index:0
-    
+    index:0,
+    show:true,
+    referral: ["产品", "设计", "运营", "Java", "iOS", "Android", "运营", "设计", "运营", "设计", "运营", "设计", "运营"],
   },
-  bindViewtext: function () {
-    wx.navigateBack({
-      url: '../about/about'
+  cloose: function (res) {
+    this.setData({
+      inputValue: this.data.referral[res.currentTarget.id],
+      show:false,
     })
   },
   changeIndex: function (e) {
-    this.setData({ index: e.detail.value })
+    this.setData({ 
+      index: e.detail.value 
+    })
+  },
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value,
+      show:true,
+    })
+  },
+  go: function (e) {
+    var that=this
+    console.log(that.data.inputValue)
+    wx.navigateBack({
+      url: '../my_intension/my_intension'
+    })
+    app.inputValue=that.data.inputValue
+  },
+  back: function (e) {
+    var that=this
+    wx.navigateBack({
+      url: '../my_intension/my_intension'
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      title: options.title
+    });
   },
 
   /**

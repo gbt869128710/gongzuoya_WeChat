@@ -1,4 +1,4 @@
-// pages/doufu/doufu.js
+// pages/my/my.js
 const app = getApp()
 Page({
 
@@ -7,7 +7,7 @@ Page({
    */
   data: {
     array:[{
-      url:"",
+      url:"../resume/resume",
       src:"../../images/001.png",
       message:"简历"
     },{
@@ -15,7 +15,7 @@ Page({
       src:"../../images/002.png",
       message:"投递记录"
     },{
-      url:"",
+      url:"../job_collect/job_collect",
       src:"../../images/003.png",
       message:"职位收藏"
     },{
@@ -27,14 +27,10 @@ Page({
     intro: "简介",
     showModalStatus:false,
   },
+  //登录
   cover:function(){  
-    this.setData({
-      showModalStatus:true
-    })
-  },
-  powerDrawer:function(){  
-    this.setData({
-      showModalStatus:false
+    wx.navigateTo({
+      url: '../login/login'
     })
   },
   modalcnt:function(){  
@@ -43,8 +39,14 @@ Page({
           success: function(res) {  
               if (res.confirm) {  
               console.log('用户点击确定')  
+              wx.setStorageSync('isLogin', false);
+
+              var isLogin = wx.getStorageSync('isLogin');
+              console.log(isLogin);
+              wx.startPullDownRefresh()
               } else if (res.cancel) {  
-              console.log('用户点击取消')  
+              console.log('用户点击取消') 
+
               }  
           }  
       })  
@@ -53,6 +55,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    //获取本地数据
+    var phone = wx.getStorageSync('phone');
+    var isLogin = wx.getStorageSync('isLogin');
+  
+    console.log(phone);
+    console.log(isLogin);
+    if(phone){
+    this.setData({phone: phone});
+    }
+    if(isLogin){
+    this.setData({isLogin: isLogin});
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -99,7 +113,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var phone = wx.getStorageSync('phone');
+    var isLogin = wx.getStorageSync('isLogin');
   
+    console.log(phone);
+    console.log(isLogin);
+    if(phone){
+    this.setData({phone: phone});
+    }
+    if(isLogin){
+    this.setData({isLogin: isLogin});
+    }
   },
 
   /**

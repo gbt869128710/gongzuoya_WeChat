@@ -9,7 +9,7 @@
 </view>
 <view class='content'>
   <block wx:for="{{array}}" wx:key="this">
-    <navigator class="center" url="../firm_message/firm_message?title={{index}}" hover-class="none">
+    <navigator class="center" url="../firm_message/firm_message?title={{item.id}}" hover-class="none">
       <view class='center-namber'>
         <text class='iconfont icon-zhiweiyouxuan' wx:if="{{index < 3}}"></text>
         <text class='iconfont icon-namber' wx:else>{{index + 1}}</text>

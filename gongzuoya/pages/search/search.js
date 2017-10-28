@@ -1,22 +1,41 @@
 // pages/search/search.js
+var area = require('../../utils/area');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array: ["上海", "南京", "北京"],
+    array: ["上海", "南京", "苏州", "无锡", "常州"],
     index: 0,
-    referral: ["产品", "设计", "运营", "Java", "iOS", "Android", "运营", "设计", "运营", "设计", "运营", "设计", "运营"]
-
+    referral: ["产品", "设计", "运营", "Java", "iOS", "Android", "运营", "设计", "运营", "设计", "运营", "设计", "运营"],
+    inputValue:"",
   },
  
   changeIndex: function (e) {
     this.setData({ index: e.detail.value })
   },
-  bindViewtext: function () {
-    wx.navigateBack({
-      url: '../about/about'
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  go: function (e) {
+    var that=this
+    wx.navigateTo({
+      url: '../list/list?title='+that.data.inputValue
+    })
+  },
+  back: function () {
+    var that=this
+    wx.switchTab({
+      url: '../job/job'
+    })
+  },
+  //点击标签
+  tapName: function (res) {
+    this.setData({
+      inputValue: this.data.referral[res.currentTarget.id],
     })
   },
   /**

@@ -1,17 +1,19 @@
 <!--pages/header/header.wxml-->
 <form bindsubmit='submitProduct'>
   <view class='nav'>
-    <view class='selectCity'>
-      <picker name='cityIndex' value='{{index}}' bindchange='changeIndex' range='{{array}}'>
-        <view class='picker'>{{array[index]}}<text class='iconfont icon-xiala'></text></view>
-      </picker>
-    </view>
      <view class='inputValue'>
       <text class='iconfont icon-search'></text>
-      <input name="productName" placeholder="" />
+      <input name="productName" placeholder="" value="{{inputValue}}" bindinput="bindKeyInput"/>
     </view>
-    <view class='btnSearch' bindtap="bindViewtext">
-      <text class='cancel'>取消</text>
+    <view class='btnSearch'>
+        <text class='cancel' bindtap='{{inputValue.length>0?"go":"back"}}'>{{inputValue.length>0?"完成":"取消"}}</text>
     </view> 
   </view>
 </form>
+<block wx:if="{{inputValue.length>0 && show}}">
+  <view class="hunt-all">
+    <block wx:for="{{referral}}" wx:key="this" wx:if="{{index<10}}">
+      <view class="hunt" id='{{index}}' bindtap="cloose"><text class='iconfont icon-search icon-search1'></text><text class='hunt-li'>{{referral[index]}}</text></view>
+    </block>
+  </view>
+</block>

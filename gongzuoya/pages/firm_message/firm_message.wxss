@@ -1,12 +1,6 @@
 /* pages/firm_message/firm_message.wxss */
 @import "../../utils/font.wxss";
-scroll-view{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    background: #fff;
-}
+
 .content{
     width: 94%;
     margin: 0 3%;
@@ -98,8 +92,8 @@ scroll-view{
     border-left: 1px solid #eee;
 }
 .icon-xin{
-    margin-left: 5px;
-    font-size: 25px;
+    margin-left:15px;
+    font-size:30px;
     color: #999;
 }
 .icon-xin.h{
@@ -109,7 +103,7 @@ scroll-view{
     width:23px;
     height:17px;
     position:absolute;
-    left:12px;
+    left:28px;
     top:-9px;
 }
 .praise-number{
@@ -117,7 +111,7 @@ scroll-view{
     width:23px;
     height:15px;
     position:absolute;
-    left:12px;
+    left:28px;
     top:-9px;
     text-align: center;
     font-size: 0.7rem;
@@ -158,8 +152,8 @@ scroll-view{
     line-height: 20px;
     border-right: 1px solid #eee;
     text-align: center;
-    color: #333;
-    font-size: 1.2rem;
+    color: #666;
+    font-size: 1rem;
 }
 
 .firm-bottom-li.h{
@@ -246,7 +240,7 @@ navigator{
     position: absolute;
     left: 0;
     top: 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #00b380;
 }
 .ranking-number{
@@ -264,7 +258,7 @@ navigator{
 .site{
     float: right;
     width: calc(100% - 30px);
-    height: 50px;
+    height:60px;
     border-bottom: 1px dashed #ccc;
 }
 .calm{
@@ -325,10 +319,10 @@ navigator{
     float: left;
     padding: 0 6px;
     margin-right: 4px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    line-height: 0.8rem;
-    font-size: 0.6rem;
+    border: 1px solid #eee;
+    border-radius:0.6rem;
+    line-height:1.2rem;
+    font-size: 0.7rem;
     color: #999;
 }
 .calm-top {
@@ -502,7 +496,7 @@ action-sheet-cancel{
 }
 .canvas{
     position: fixed;
-    top: 200%;
+    top: 5200%;
     left: 0;
     z-index: -100;
 }

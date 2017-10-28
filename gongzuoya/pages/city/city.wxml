@@ -1,0 +1,11 @@
+<!--pages/city/city.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+  <view class="content-block-bottom">
+    <view class='p'>热闹城市</view>
+    <view class="city-ul">
+      <block wx:for="{{itemname.job_city}}" wx:key="this">
+        <view class="city-li" data-id="{{index}}" bindtap="city">{{item}}</view>
+      </block>
+    </view>
+  </view>
+</block>

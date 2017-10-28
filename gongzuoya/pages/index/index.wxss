@@ -1,6 +1,5 @@
 /**index.wxss**/
 @import "../../utils/font.wxss";
-@import "../login/login.wxss";
 
 .container {
   height: 100%;
@@ -35,10 +34,10 @@ picker {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.logo {
+.logo-top {
   width: 100%;
 }
-.logo image {
+.logo-top image {
   display: block;
   width: 105px;
   margin: 0 auto;
@@ -106,31 +105,31 @@ swiper{
   height: 48px;
   background-position: -95px -11px;
 }
-swiper-item:nth-child(1) navigator:nth-child(1) .img{
+swiper-item:nth-child(1) .ppt:nth-child(1) .img{
   background-position: -22px -11px;
 }
-swiper-item:nth-child(1) navigator:nth-child(2) .img{
+swiper-item:nth-child(1) .ppt:nth-child(2) .img{
   background-position: -95px -11px;
 }
-swiper-item:nth-child(1) navigator:nth-child(3) .img{
+swiper-item:nth-child(1) .ppt:nth-child(3) .img{
   background-position: -240px -11px;
 }
-swiper-item:nth-child(2) navigator:nth-child(1) .img{
+swiper-item:nth-child(2) .ppt:nth-child(1) .img{
   background-position: -457px -11px;
 }
-swiper-item:nth-child(2) navigator:nth-child(2) .img{
+swiper-item:nth-child(2) .ppt:nth-child(2) .img{
   background-position: -530px -11px;
 }
-swiper-item:nth-child(2) navigator:nth-child(3) .img{
+swiper-item:nth-child(2) .ppt:nth-child(3) .img{
   background-position: -167px -11px;
 }
-swiper-item:nth-child(3) navigator:nth-child(1) .img{
+swiper-item:nth-child(3) .ppt:nth-child(1) .img{
   background-position: -385px -11px;
 }
-swiper-item:nth-child(3) navigator:nth-child(2) .img{
+swiper-item:nth-child(3) .ppt:nth-child(2) .img{
   background-position: -603px -11px;
 }
-swiper-item:nth-child(3) navigator:nth-child(3) .img{
+swiper-item:nth-child(3) .ppt:nth-child(3) .img{
   background-position: -675px -11px;
 }
 .swiper-item{

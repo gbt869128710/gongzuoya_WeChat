@@ -1,0 +1,149 @@
+<!--pages/list/list.wxml-->
+<view class='content'>
+    <view class='top'>
+        <form>
+            <view class='search'>
+                <text class='iconfont icon-search'></text>
+                <input placeholder-class="phcolor"  name="productName" placeholder="" value='{{title}}' />
+            </view>
+        </form>
+        <view class='sort'>
+            <block wx:for="{{sort}}" wx:key="this">
+                <view class='rank' id='{{index}}' bindtap='{{(showh && index==tabidh) ? "bindViewbottom" : "bindViewtop"}}' >
+                    <text class='site {{(showh && index==tabidh) ? "h" : ""}}'>{{item}}</text>
+                    <text class='iconfont {{(showh && index==tabidh) ? "icon-jiankuohao-xi-shang" : "icon-jiankuohao-xi-xia"}}'></text>
+                </view>
+            </block>
+        </view>
+    </view>
+        
+        <!--<block wx:for="{{sort}}" wx:for-item="itemname" wx:key="this">-->
+
+    <view class="drawer_screen" wx:if="{{showh}}" bindtap='bindViewbottom' ></view>
+    <view class='down' wx:if="{{showh && 0==tabidh}}">
+        <view class="form-item">
+            <view class="form-item-hd">所在地区：</view>
+            <view class="form-item-bd" bindtap="showDistpicker">
+                <view class="input {{!provinceName[provinceSelIndex] ? 'input-placeholder' : ''}}">
+                    <block wx:if="{{provinceName[provinceSelIndex]}}">{{provinceName[provinceSelIndex]}} {{cityName[citySelIndex]}} {{districtName[districtSelIndex]}}</block>
+                    <block wx:else>请选择所在地区</block>
+                </view>
+                <input type="text" name="province" value="{{provinceName[provinceSelIndex]}}" class="hidden"/>
+                <input type="text" name="city" value="{{cityName[citySelIndex]}}" class="hidden"/>
+                <input type="text" name="district" value="{{districtName[districtSelIndex]}}" class="hidden"/>
+            </view>
+        </view>
+    </view>
+    <view class="distpicker {{(showDistpicker && 0==tabidh) ? '' : 'hidden'}}">
+        <view class="distpicker-btn">
+            <view class="distpicker-cancel-btn" bindtap="distpickerCancel">取消</view>
+            <view class="distpicker-sure-btn" bindtap="distpickerSure">确定</view>
+        </view> 
+        <picker-view indicator-style="height: 40px;" class="distpicker-content" value="{{value}}" bindchange="changeArea">
+            <!-- 省 -->
+            <picker-view-column>
+                <view wx:for="{{provinceName}}" wx:key="province" class="area-item">{{item}}</view>
+            </picker-view-column>
+            <!-- 市 -->
+            <picker-view-column>
+                <view wx:for="{{cityName}}" wx:key="city" class="area-item">{{item}}</view>
+            </picker-view-column>
+            <!-- 区 -->
+            <picker-view-column>
+                <view wx:for="{{districtName}}" wx:key="district" class="area-item">{{item}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+    <view class='down' wx:if="{{showh && 1==tabidh}}">
+        <view class="down-salary">
+            <view class="form-item-hd">月薪范围： </view>
+            <view class="down-salary-list">
+                <block wx:for="{{pay}}" wx:key="this">
+                    <view class='pay {{payh && index==payid ? "h" : ""}}' id='{{index}}' bindtap='{{payh && index==payid ? "bindViewpayh" : "bindViewpay"}}' >{{item}}
+                    </view>
+                </block>
+            </view>
+            <view class="form-item-hd">工作经验： </view>
+            <view class="down-salary-list">
+                <block wx:for="{{experience}}" wx:key="this">
+                    <view class='pay {{experienceh && index==experienceid ? "h" : ""}}' id='{{index}}' bindtap='{{experienceh && index==experienceid ? "bindViewexperienceh" : "bindViewexperience"}}' >{{item}}
+                    </view>
+                </block>
+            </view>
+            <view class="form-item-hd">学历要求： </view>
+            <view class="down-salary-list">
+                <block wx:for="{{education}}" wx:key="this">
+                    <view class='pay {{educationh && index==educationid ? "h" : ""}}' id='{{index}}' bindtap='{{educationh && index==educationid ? "bindVieweducationh" : "bindVieweducation"}}' >{{item}}
+                    </view>
+                </block>
+            </view>
+            <view class="form-item-hd">院校属性： </view>
+            <view class="down-salary-list">
+                <block wx:for="{{academy}}" wx:key="this">
+                    <view class='pay {{academyh && index==academyid ? "h" : ""}}' id='{{index}}' bindtap='{{academyh && index==academyid ? "bindViewacademyh" : "bindViewacademy"}}' >{{item}}
+                    </view>
+                </block>
+            </view>
+            <button type="primary" bindtap="bindViewbottom"> 确定 </button>
+        </view>
+    </view>
+    <view class='down' wx:if="{{showh && 2==tabidh}}">
+        <view class="down-salary">
+            <view class="form-item-hd">职业类别： </view>
+            <view class="down-salary-list">
+                <block wx:for="{{category}}" wx:key="this">
+                    <view class='pay {{categoryh && index==categoryid ? "h" : ""}}' id='{{index}}' bindtap='{{categoryh && index==categoryid ? "bindViewcategoryh" : "bindViewcategory"}}' >{{item}}
+                    </view>
+                </block>
+            </view>
+            <button type="primary" bindtap="bindViewbottom"> 确定 </button>
+        </view>
+    </view>
+    <view class='down' wx:if="{{showh && 3==tabidh}}">
+        <view class="down-salary">
+            <view class="down-salary-list">
+                <block wx:for="{{rank}}" wx:key="this">
+                    <view class='pay-rank {{index==rankid ? "h" : ""}}' id='{{index}}' bindtap='bindViewrank' >{{item}}
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <!--</block>-->
+    <view class='list'>
+        <block  wx:for="{{job}}" wx:key="this">
+            <navigator url="../firm_message/firm_message?title={{item.id}}" hover-class="none">
+                <view class="center">
+                    <view class='center-msg'>
+                        <view class='center-msg-top'>
+                            <text class='center-job'>{{item.job}}</text>
+                            <text class='center-money'>{{item.money}}</text>
+                        </view>
+                        <view class='center-msg-bottom'>
+                            <text class='center-job-city'>{{item.city}}</text>
+                            <text class='center-job-city'>{{item.time}}</text>
+                            <text class='center-job-city'>{{item.record}}</text>
+                            <text class='center-issue'>1天前发布</text>
+                        </view>
+                    </view>
+                    <block wx:for="{{firm}}"  wx:for-item="i" wx:key="this">
+                        <view class="firm-top firm-top-margin firm-top-border" wx:if="{{item.id==i.id}}">
+                            <view class="firm-top-left">
+                                <image src='{{i.img}}'></image>
+                            </view>
+                            <view class="firm-top-right">
+                                <view class="firm-name">{{i.name}}</view>
+                                <view class="firm-message">
+                                    <text class='center-city'>{{i.nature}}</text>
+                                    <text class='center-city'>{{i.people}}</text>
+                                    <text class='center-city'>{{i.msg}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </navigator>
+        </block>
+    </view>
+</view>
+<view class='footer'>没有更多了</view>

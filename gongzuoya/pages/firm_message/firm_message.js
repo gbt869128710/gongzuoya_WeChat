@@ -8,7 +8,7 @@ Page({
    */
   data: {
 	max_height:3,
-    array:util.firm,
+    firm:util.firm,
     job:util.job,
     interview:util.interview,
     show:true,
@@ -22,19 +22,10 @@ Page({
     city:"",
     cityid:null,
 	scrollTop1:0,
-    hot:"",
+    // hot:"",
     actionSheetHidden: true,
     picture:["../../images/logo2.png","../../images/logo1.png"],
     image_ewm:[]
-  },
- 
-  scroll: function(e) {
-	  console.log(e.detail.scrollTop)
-	 var that = this,
-	 scrollTop1=that.data.scrollTop;
-    this.setData({
-      scrollTop1: e.detail.scrollTop,
-    })
   },
   //展开/收起
   bindViewbottom: function (e) {
@@ -56,9 +47,9 @@ Page({
   },
   //点击标签
   tapName: function (res) {
-   this.setData({
-      scrollTop:401,
-    })
+   wx.pageScrollTo({
+	scrollTop: 401
+	})
     this.setData({
       tabid:res.currentTarget.id
     })
@@ -87,7 +78,7 @@ Page({
     //获取当前图片的下表
         index = e.currentTarget.dataset.index,
         //数据源
-        pictures =that.data.array[that.data.title].ppt;
+        pictures =that.data.firm[that.data.title].ppt;
     wx.previewImage({
     //当前显示下表
       current: pictures[index],
@@ -99,12 +90,12 @@ Page({
    friend: function (e) {
        var that = this
     var context = wx.createCanvasContext('myCanvas');
-    context.drawImage(that.data.array[that.data.title].code[0], 190,145, 370,370)
+    context.drawImage(that.data.firm[that.data.title].code[0], 190,145, 370,370)
     context.drawImage(that.data.picture[0],0, 0,750, 938)
     context.setTextAlign('center')
     context.setFillStyle("#ffffff")
     context.setFontSize(60)
-     context.fillText(that.data.array[that.data.title].name, 375,590)
+     context.fillText(that.data.firm[that.data.title].name, 375,590)
     context.draw()
     wx.canvasToTempFilePath({
       x: 0,
@@ -129,12 +120,12 @@ Page({
    public: function (e) {
        var that = this
        var context = wx.createCanvasContext('myCanvas-two');
-    context.drawImage(that.data.array[that.data.title].code[0], 375,32, 220,220)
+    context.drawImage(that.data.firm[that.data.title].code[0], 375,32, 220,220)
     context.drawImage(that.data.picture[1],0, 0,623, 323)
     context.setTextAlign('left')
     context.setFillStyle("#000000")
     context.setFontSize(36)
-     context.fillText(that.data.array[that.data.title].name, 62,70)
+     context.fillText(that.data.firm[that.data.title].name, 62,70)
     context.draw()
     //导出图片
     wx.canvasToTempFilePath({
@@ -165,9 +156,9 @@ Page({
         //数据源
     wx.previewImage({
     //当前显示下表
-      current: that.data.array[that.data.title].code[0],
+      current: that.data.firm[that.data.title].code[0],
       //数据源
-      urls: that.data.array[that.data.title].code
+      urls: that.data.firm[that.data.title].code
     })
    },
   //地图
@@ -180,10 +171,16 @@ Page({
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap')
     wx.openLocation({
-      name:that.data.array[that.data.title].land[that.data.cityid].site+that.data.array[that.data.title].land[that.data.cityid].site_city,
-      latitude: that.data.array[that.data.title].land[that.data.cityid].site_land[1],
-      longitude: that.data.array[that.data.title].land[that.data.cityid].site_land[0],
+      name:that.data.firm[that.data.title].land[that.data.cityid].site+that.data.firm[that.data.title].land[that.data.cityid].site_city,
+      latitude: that.data.firm[that.data.title].land[that.data.cityid].site_land[1],
+      longitude: that.data.firm[that.data.title].land[that.data.cityid].site_land[0],
       scale: 28
+    })
+  },
+  //页面滚动触发事件的处理函数 
+  onPageScroll: function(e) {
+    this.setData({
+      scrollTop1: e.scrollTop,
     })
   },
   /**
@@ -191,60 +188,8 @@ Page({
    */
   
   onLoad: function(options) { 
-    var scene = decodeURIComponent(options.scene)
     var that =this
-    // function drawCanvas(that){
-    //   var context = wx.createCanvasContext('myCanvas');
-    //   var pixelRatio = 2;
-    //   context.setFillStyle("#ffffff")
-    //   context.fillRect(0,0,that.data.windowWidth,that.data.windowHeight)
-    //   context.drawImage(that.data.picture[0],0, 0,1080 / pixelRatio, 1350 / pixelRatio)
-    //   context.stroke()
-    //   context.draw()
-    //   var cont = wx.createCanvasContext('myyard');
-    //   cont.fillRect(0,0,250,250)
-    //   cont.drawImage(that.data.array[that.data.title].code[0], 0, 0, 250,250)
-    //   cont.arc(100, 75, 50, 0, 2 * Math.PI)
-    //   cont.setTextAlign('center')
-    //   cont.setFillStyle("#ffffff")
-    //   cont.setTextBaseline("middle")
-    //   cont.setFontSize(36)
-    //   cont.fillText(that.data.array[that.data.title].name, 125,290)
-    //   wx.drawCanvas({
-    //     canvasId:'myyard',
-    //     actions:cont.getActions(),
-    //   })
-    // }
-    // console.log(that.data.windowWidth)
-    //
-    // wx.downloadFile({
-    //   url: 'https://example.com/audio/123', //仅为示例，并非真实的资源
-    //   success: function(res) {
-    //     wx.playVoice({
-    //       filePath: res.tempFilePath
-    //     })
-    //   }
-    // })
-    // const downloadTask = wx.downloadFile({
-    //     url:that.data.imgUrl, //仅为示例，并非真实的资源
-    //     success: function(res) {
-    //         that.setData({
-    //           medalImgPath:res.tempFilePath
-    //         })
-    //     }
-    // })
-    // const downloadTask2 = wx.downloadFile({
-    //     url:'https://example.com/audio/123', //仅为示例，并非真实的资源
-    //     success: function(res) {
-    //         that.setData({
-    //           bgImgPath:res.tempFilePath
-    //         })
-    //         drawCanvas(that);
-    //     }
-    // })
-
-
-	  wx.getSystemInfo({
+	wx.getSystemInfo({
       success: function (res) {
         that.setData({
           pixelRatio:res.pixelRatio,
@@ -254,10 +199,10 @@ Page({
 
       },
     })
-
+console.log(options.title)
     this.setData({    
       title: options.title,
-      hot:this.data.array[options.title].hot+1
+      hot:this.data.firm[options.title].hot+1
     }) 
     if (app.globalData.userInfo) {
       this.setData({
@@ -336,4 +281,5 @@ Page({
   onShareAppMessage: function () {
   
   }
+  
 })

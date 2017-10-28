@@ -1,0 +1,115 @@
+/* pages/my_personal/my_personal.wxss */
+@import "../../utils/font.wxss";
+page{
+    position: relative;
+    background: #f5f5f5;
+}
+.my{
+    padding: 0 35rpx;
+    background: #fff;
+    margin-top: 15rpx;
+}
+.my:first-of-type{
+    margin-top: 0rpx;
+}
+.my-center{
+    width: 100%;
+    height: 90rpx;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.my .my-center:last-of-type{
+    border-bottom: none;
+}
+.my-center-left{
+    width:120rpx;
+    font-size:28rpx;
+    color:#333;
+}
+.my-center-right{
+    width: calc(100% - 120rpx);
+    text-align: right;
+}
+input{
+    width:100%;
+    text-align: right;
+    font-size:26rpx;
+    color:#999;
+}
+.sex{
+    font-size:26rpx;
+    color:#999;
+}
+.icon-jiankuohaoxiyou {
+    font-size:26rpx;
+    color:#999;
+    line-height:40rpx;
+}
+picker {
+    display:inline-block;
+    width: 80%;
+}
+.referral{
+    padding: 0 5%;
+    font-size:26rpx;
+    color:#999;
+    line-height: 80rpx;
+}
+.referral-textarea{
+    position: relative;
+    padding: 40rpx 35rpx;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+textarea{
+    width: 100%;
+    height: 72rpx;
+    font-size: 26rpx;
+}
+.referral-textarea-length{
+    text-align: right;
+    font-size:26rpx;
+    color:#999;
+}
+.button{
+    padding: 100rpx 65rpx;
+    background: #fff;
+}
+button[type="primary"]{
+    background-color:#00b380;
+    border-radius:50rpx;
+}
+.button-hover[type="primary"] {
+color:rgba(255, 255, 255, 0.6);
+background-color:rgba(0, 179, 128, 0.9);
+
+}
+.hidden {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    opacity:0;
+
+}
+
+.message {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    width: 400rpx;
+    height: 80rpx;
+    margin-left: -200rpx;
+    background-color: rgba(0, 0, 0, .75);
+    border-radius: 20px;
+    text-align: center;
+    line-height: 80rpx;
+    color: #fff;
+    opacity: 0;
+	z-index: 11;
+}
+
+.fade-in {
+    animation: fadeIn .3s forwards;
+}
