@@ -17,7 +17,7 @@
     <view class="list">
         <block wx:if="{{isLogin}}">
             <navigator url="{{item.url}}" open-type="navigate"
-                    hover-class="none" class="margin-top" wx:for="{{array}}" wx:key="this">
+                    hover-class="navigator-hover" class="margin-top" wx:for="{{array}}" wx:key="this">
                 <image src="{{item.src}}" class="calm"></image>{{item.message}}
                 <text class="iconfont icon-jiankuohaoxiyou"></text>
             </navigator>

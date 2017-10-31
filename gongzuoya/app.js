@@ -59,6 +59,47 @@ var config = {
     //   }
     // })
   },
+  ajax:{
+    req:function(url,data,callback){
+      wx.request({
+        url: url,
+        data:data,
+        method:'POST',
+        header:{
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          callback(res)
+        }
+      })
+    },
+    getreq: function (url, data='', callback) {
+      wx.request({
+        url: url,
+        data: data,
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          callback(res)
+        }
+      })
+    },
+    getList: function (url,data, callback){
+      wx.request({
+        url: url,
+        data: data,
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          callback(res)
+        }
+      })
+    }
+  },
   globalData: {
     userInfo: null
   }

@@ -1,0 +1,68 @@
+<!--pages/my_education/my_education.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+<block wx:for="{{itemname.education}}" wx:for-item="work" wx:key="this" wx:if="{{education_id==work.education_id}}">
+	<form bindsubmit="formSubmit">
+		<view class="my" id="{{index}}">
+            <view class="my-center">
+				<view class="my-center-left">学校名称</view>
+				<navigator class="my-center-right" url="../header/header?title={{show?work.school:''}}" hover-class="none">
+					<text class="sex">{{show && work.school?work.school:"请输入"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="name" value='{{show && work.school?work.school:"请输入"}}' class="hidden"/>
+			    </navigator>
+			</view>
+            <view class="my-center">
+				<view class="my-center-left">所属院校</view>
+				<view class="my-center-right">
+					<picker value="{{academy_number}}" range="{{work.academy}}" bindchange="academy">
+						<view class="sex">{{show && work.academy[academy_number]?work.academy[academy_number]:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="academy" value='{{show && work.academy[academy_number]?work.academy[academy_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">所学专业</view>
+				<navigator class="my-center-right" url="../header/header?title={{show?work.major:''}}" hover-class="none">
+					<text class="sex">{{show && work.major?work.major:"请输入"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="major" value='{{show && work.major?work.major:"请输入"}}' class="hidden"/>
+			    </navigator>
+            </view>
+			<view class="my-center">
+				<view class="my-center-left">毕业年份</view>
+			  	<view class="my-center-right">
+				  	<block wx:if="{{show}}">
+						<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="2017-10" bindchange="bindDateChange">
+							<view class="sex">{{date?date:work.graduate}}</view>
+						</picker>
+						<text class="iconfont icon-jiankuohaoxiyou"></text>
+						<input type="text" name="date" value='{{date?date:work.graduate}}' class="hidden"/>
+					</block>
+					<block wx:else>
+						<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="2017-10" bindchange="bindDateChange">
+							<view class="sex">{{date?date:"请选择"}}</view>
+						</picker>
+						<text class="iconfont icon-jiankuohaoxiyou"></text>
+						<input type="text" name="date" value='{{date?date:"请选择"}}' class="hidden"/>
+					</block>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">学历</view>
+				<view class="my-center-right" bindtap="record">
+					<text class="sex">{{itemname.record[record_number]?itemname.record[record_number]:"请选择"}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="record" value='{{itemname.record[record_number]?itemname.record[record_number]:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="button">
+			<button type="primary" formType="submit">保存</button>
+			<view class="delete" wx:if="{{show}}">删除此教育经历</view>
+		</view>
+	</form>
+	<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</block>
+</block>
+

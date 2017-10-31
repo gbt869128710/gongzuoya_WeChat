@@ -13,7 +13,7 @@
 		<view class='logo-top'>
 			<image src="{{src}}"></image>
 		</view>
-		<form bindsubmit='submitProduct'>
+		<form>
 			<view class='search'>
 				<input placeholder-class="phcolor"  name="productName" placeholder="请输入职位关键字，如：会计..." value="{{inputValue}}" bindinput="bindKeyInput" />
 				<text class='iconfont icon-search' bindtap='{{inputValue.length>0?"go":""}}'></text>

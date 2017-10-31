@@ -1,0 +1,11 @@
+<!--pages/trade/trade.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{title==itemname.id}}">
+  <view class="content-block-bottom">
+    <view class='p'>热门职业</view>
+    <view class="city-ul">
+      <block wx:for="{{itemname.trade}}" wx:key="this">
+        <view class="city-li" data-id="{{index}}" bindtap="trade">{{item}}</view>
+      </block>
+    </view>
+  </view>
+</block>

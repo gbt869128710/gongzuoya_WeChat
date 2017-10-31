@@ -1,0 +1,20 @@
+<!--pages/my_tally/my_tally.wxml-->
+<form bindsubmit='submitProduct'>
+  <view class='nav'>
+     <view class='inputValue'>
+      <text class='iconfont icon-search'></text>
+      <input name="productName" placeholder="" value="{{inputValue}}" bindfocus="bindKeyInput"/>
+    </view>
+    <view class='btnSearch'>
+        <text class='cancel' bindtap='{{inputValue.length>0?"go":"back"}}'>{{inputValue.length>0?"完成":"取消"}}</text>
+    </view> 
+  </view>
+</form>
+<block wx:if="{{show}}">
+  <view class="hunt-all">
+    <block wx:for="{{ego}}" wx:key="this">
+      <view class="hunt {{item.is_check ? 'h' : ''}}" id='{{index}}' bindtap="cloose">{{item.name}}
+      </view>
+    </block>
+  </view>
+</block>

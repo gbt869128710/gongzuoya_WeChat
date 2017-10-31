@@ -1,15 +1,22 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/header/header",
-    "pages/search/search",
+    "pages/my_tally/my_tally",
     "pages/resume/resume",
+    "pages/city/city",
+    "pages/header/header",
+    "pages/my_project/my_project",
+    "pages/my_cultivate/my_cultivate",
+    "pages/index/index",
+    "pages/my_education/my_education",
+    "pages/my_work/my_work",
     "pages/my_intension/my_intension",
+    "pages/trade/trade",
+    "pages/search/search",
     "pages/list/list",
     "pages/login/login",
     "pages/job/job",
-    "pages/city/city",
     "pages/my_personal/my_personal",
+    
     "pages/logs/logs",
     "pages/job_message/job_message",
     "pages/my/my",
@@ -23,6 +30,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00b380",
     "navigationBarTitleText": "",
+    "enablePullDownRefresh" :true,
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

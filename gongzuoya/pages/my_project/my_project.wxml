@@ -1,0 +1,52 @@
+<!--pages/my_project/my_project.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+<block wx:for="{{itemname.project}}" wx:for-item="work" wx:key="this" wx:if="{{project_id==work.project_id}}">
+	<form bindsubmit="formSubmit">
+		<view class="my" id="{{index}}">
+            <view class="my-center">
+				<view class="my-center-left">项目名称</view>
+				<view class="my-center-right">
+					<input placeholder-style="color:#999" placeholder="请输入" value="{{show?work.firm:''}}" name="name"/>
+				</view>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">项目职务</view>
+				<view class="my-center-right">
+					<input placeholder-style="color:#999" placeholder="请输入" value="{{show?work.job:''}}" name="job"/>
+				</view>
+            </view>
+			<view class="my-center">
+				<view class="my-center-left">开始时间</view>
+			  	<view class="my-center-right">
+					<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="2017-10" bindchange="bindDateChange">
+						<view class="sex">{{date?date:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="date" value='{{date?date:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+            <view class="my-center">
+				<view class="my-center-left">结束时间</view>
+				<view class="my-center-right">
+					<picker mode="date" fields="month" value="{{datetime}}" start="2015-09" end="2017-10" bindchange="bindDatetime">
+						<view class="sex">{{datetime?datetime:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="datetime" value='{{datetime?datetime:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="referral">项目内容</view>
+		<view class="referral-textarea">
+			<textarea value="{{show?work.content:''}}" placeholder="请输入项目内容"/>
+      		<input type="text" name="textarea" value='{{show?work.content:""}}' class="hidden"/>
+		</view>
+		<view class="button">
+			<button type="primary" formType="submit">保存</button>
+			<view class="delete" wx:if="{{show}}">删除此项目经验</view>
+		</view>
+	</form>
+	<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</block>
+</block>
+

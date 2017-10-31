@@ -3,11 +3,11 @@
 	<form bindsubmit="formSubmit">
 		<view class="my" id="{{index}}">
             <view class="my-center">
-				<view class="my-center-left">{{job}}期望城市</view>
+				<view class="my-center-left">期望城市</view>
 				<navigator class="my-center-right" url="../city/city" hover-class="none">
 					<text class="sex">{{itemname.city[cityid]?itemname.city[cityid]:"请选择"}}</text>
 					<text class="iconfont icon-jiankuohaoxiyou"></text>
-					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
+					<input type="text" name="city" value='{{itemname.city[cityid]?itemname.city[cityid]:"请选择"}}' class="hidden"/>
 				</navigator>
 			</view>
 			<view class="my-center">
@@ -15,30 +15,32 @@
 				<navigator class="my-center-right" url="../header/header?title={{itemname.job}}" hover-class="none">
 					<text class="sex">{{itemname.job?itemname.job:"如：产品经理、Java"}}</text>
 					<text class="iconfont icon-jiankuohaoxiyou"></text>
-					<input type="text" name="sex" value='{{itemname.job?itemname.job:"如：产品经理、Java"}}' class="hidden"/>
+					<input type="text" name="job" value='{{itemname.job?itemname.job:"如：产品经理、Java"}}' class="hidden"/>
 			    </navigator>
             </view>
 			<view class="my-center">
 				<view class="my-center-left">职位类型</view>
-				<view class="my-center-right" bindtap="sex">
-					<text class="sex">{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}</text>
+			  <navigator class="my-center-right" url="../trade/trade?title={{itemname.id}}" hover-class="none">
+					<text class="sex">{{itemname.trade[tradeid]?itemname.trade[tradeid]:"请选择"}}</text>
 					<text class="iconfont icon-jiankuohaoxiyou"></text>
-					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
-				</view>
+					<input type="text" name="trade" value='{{itemname.trade[tradeid]?itemname.trade[tradeid]:"请选择"}}' class="hidden"/>
+				</navigator>
 			</view>
             <view class="my-center">
 				<view class="my-center-left">期望月薪</view>
-				<view class="my-center-right" bindtap="sex">
-					<text class="sex">{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}</text>
+				<view class="my-center-right">
+					<picker value="{{money_number}}" range="{{itemname.money}}" bindchange="money">
+						<view class="sex">{{itemname.money[money_number]?itemname.money[money_number]:"请选择"}}</view>
+					</picker>
 					<text class="iconfont icon-jiankuohaoxiyou"></text>
-					<input type="text" name="sex" value='{{itemname.sex[sex_number]?itemname.sex[sex_number]:"请选择"}}' class="hidden"/>
+					<input type="text" name="money" value='{{itemname.money[money_number]?itemname.money[money_number]:"请选择"}}' class="hidden"/>
 				</view>
 			</view>
 		</view>
 		<view class="referral">补充说明</view>
 		<view class="referral-textarea">
-			<textarea bindblur="bindTextAreaBlur" value="{{inputValue}}" placeholder="请填写补充说明"/>
-			<input type="text" name="referral" value='{{inputValue}}' class="hidden"/>
+			<textarea value="{{show?inputValue:''}}" placeholder="请填写补充说明"/>
+      		<input type="text" name="textarea" value='{{show?inputValue:""}}' class="hidden"/>
 		</view>
 		<view class="button">
 			<button type="primary" formType="submit">保存</button>

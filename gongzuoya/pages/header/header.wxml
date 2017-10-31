@@ -10,7 +10,7 @@
     </view> 
   </view>
 </form>
-<block wx:if="{{inputValue.length>0 && show}}">
+<block wx:if="{{inputValue.length>0 && show && showh}}">
   <view class="hunt-all">
     <block wx:for="{{referral}}" wx:key="this" wx:if="{{index<10}}">
       <view class="hunt" id='{{index}}' bindtap="cloose"><text class='iconfont icon-search icon-search1'></text><text class='hunt-li'>{{referral[index]}}</text></view>

@@ -13,7 +13,10 @@ Page({
     sex_number:1,
     record_number: 1,
     time_number: 1,
-    cityid:1,
+    cityid: 1,
+    money_number: 1,
+    tradeid:1,
+    academy_number: 1,
   },
   //编辑个人信息
   redact:function(){  
@@ -36,21 +39,7 @@ Page({
       }
     })
   },
-  //目前状态
-  grasp:function(){  
-    var that=this
-    wx.showActionSheet({
-      itemList: ["熟练","良好","一般"],
-      success: function(res) {
-        that.setData({
-          grasp_number: res.tapIndex,
-        })
-      },
-      fail: function(res) {
-        console.log(res.errMsg)
-      }
-    })
-  },
+  
   //预览图
   ppt: function (e) {
     console.log(e)

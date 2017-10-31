@@ -40,8 +40,8 @@
             <navigator url="../my_intension/my_intension" hover-class="none" class="edit">编辑</navigator>
         </view>
         <view class="job-top">
-            <view class="job-top-name" wx:if="{{itemname.job}}">{{itemname.trade}} · {{itemname.job}}</view>
-            <view class="job-top-expect" wx:if="{{itemname.city}}">{{itemname.city[cityid]}} / {{itemname.money}}</view>
+            <view class="job-top-name" wx:if="{{itemname.job}}">{{itemname.trade[tradeid]}} · {{itemname.job}}</view>
+            <view class="job-top-expect" wx:if="{{itemname.city}}">{{itemname.city[cityid]}} / {{itemname.money[money_number]}}</view>
         </view>
     </view>
 	<view class="education">
@@ -54,14 +54,14 @@
 				<view class="education-top-right">
 					<view class="school">
 						<view class="job-top-name" wx:if="{{item.school}}">{{item.school}}</view>
-						<view class="edit" bindtap="edit_education">编辑</view>
+						<navigator url="../my_education/my_education?title={{item.education_id}}&&show=true" class="edit" hover-class="none">编辑</navigator>
 					</view>
-					<view class="job-top-expect" wx:if="{{item.academy}}">{{item.academy}} / {{itemname.record[record_number]}} / {{item.major}}</view>
+					<view class="job-top-expect" wx:if="{{item.academy}}">{{item.academy[academy_number]}} / {{itemname.record[record_number]}} / {{item.major}} / {{item.campus}}</view>
 					<view class="job-top-expect" wx:if="{{item.graduate}}">{{item.graduate}}毕业</view>
 				</view>
 			</view>
 		</block>
-		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加教育经历</view>
+		<navigator url="../my_education/my_education?title=0"  hover-class="none" class="my-footer-left plus"><text class="iconfont icon-anonymous-iconfont"></text>添加教育经历</navigator>
     </view>
     <view class="education">
         <view class="my-footer-left" wx:if="{{itemname.work}}">工作经历</view>
@@ -74,7 +74,7 @@
                     <view class="education-top-right">
                         <view class="school">
                             <view class="job-top-name" wx:if="{{item.job}}">{{item.job}}</view>
-                            <view class="edit" bindtap="edit_education">编辑</view>
+                            <navigator url="../my_work/my_work?title={{item.work_id}}&&show=true" class="edit" hover-class="none">编辑</navigator>
                         </view>
                         <view class="job-top-expect" wx:if="{{item.firm}}">{{item.firm}} / {{item.section}}</view>
                         <view class="job-top-expect" wx:if="{{item.start}}">{{item.start}} 至 {{item.over}}</view>
@@ -86,12 +86,12 @@
                 </view>
 			</view>
 		</block>
-		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加工作经历</view>
+		<navigator url="../my_work/my_work?title=0" hover-class="none" class="my-footer-left plus"><text class="iconfont icon-anonymous-iconfont"></text>添加工作经历</navigator>
     </view>
     <view class="education">
         <view class="my-footer">
             <view class="my-footer-left">自我介绍</view>
-            <view class="edit" bindtap="edit">编辑</view>
+            <navigator url="../my_tally/my_tally?title={{item.work_id}}" class="edit" hover-class="none">编辑</navigator>
         </view>
         <view class="ego-top" wx:if="{{itemname.ego_}}">
             <block wx:for="{{itemname.ego_}}" wx:key="this">
@@ -102,7 +102,7 @@
     <view class="education">
         <view class="my-footer">
             <view class="my-footer-left">我的技能</view>
-            <view class="edit" bindtap="edit">编辑</view>
+            <navigator url="../my_tally/my_tally?title={{item.work_id}}" class="edit" hover-class="none">编辑</navigator>
         </view>
         <view class="ego-top" wx:if="{{itemname.skill_}}">
             <block wx:for="{{itemname.skill_}}" wx:key="this">
@@ -118,7 +118,7 @@
                     <view class="education-top-right project">
                         <view class="school">
                             <view class="job-top-name project-name" wx:if="{{item.job}}">{{item.firm}}</view>
-                            <view class="edit" bindtap="edit_education">编辑</view>
+                            <navigator url="../my_project/my_project?title={{item.work_id}}&&show=true" class="edit" hover-class="none">编辑</navigator>
                         </view>
                         <view class="job-top-expect" wx:if="{{item.firm}}">{{item.job}}</view>
                         <view class="job-top-expect" wx:if="{{item.start}}">{{item.start}} 至 {{item.over}}</view>
@@ -130,7 +130,7 @@
                 </view>
 			</view>
 		</block>
-		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加项目经验</view>
+    <navigator url="../my_project/my_project?title=0" hover-class="none" class="my-footer-left plus"><text class="iconfont icon-anonymous-iconfont"></text>添加项目经验</navigator>
     </view>
     <view class="education">
         <view class="my-footer-left" wx:if="{{itemname.works}}">我的作品</view>
@@ -151,7 +151,7 @@
                 </view>
 			</view>
 		</block>
-		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加项目经验</view>
+		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加我的作品</view>
     </view>
     <view class="education">
         <view class="my-footer-left" wx:if="{{itemname.cultivate}}">培训经历</view>
@@ -161,15 +161,14 @@
                     <view class="education-top-right project">
                         <view class="school">
                             <view class="job-top-name project-name" wx:if="{{item.job}}">{{item.firm}}</view>
-                            <view class="edit" bindtap="edit_education">编辑</view>
+                            <navigator url="../my_cultivate/my_cultivate?title={{item.work_id}}&&show=true" class="edit" hover-class="none">编辑</navigator>
                         </view>
                         <view class="job-top-expect" wx:if="{{item.firm}}">{{item.job}}</view>
                         <view class="job-top-expect" wx:if="{{item.start}}">{{item.start}} 至 {{item.over}}</view>
                         <view class="my-footer">
                             <view class="my-footer-left">掌握程度</view>
-                            <view class="my-footer-right" bindtap="grasp">
-                                <text class="now" wx:if="{{itemname.grasp}}">{{itemname.grasp[grasp_number]}}</text>
-                                <text class="iconfont icon-jiankuohaoxiyou"></text>
+                            <view class="my-footer-right">
+                                <text class="now" wx:if="{{item.grasp}}">{{item.grasp[grasp_number]}}</text>
                             </view>
                         </view>
                     </view>
@@ -180,7 +179,7 @@
                 </view>
 			</view>
 		</block>
-		<view class="my-footer-left plus" bindtap="edit_education"><text class="iconfont icon-anonymous-iconfont"></text>添加培训经历</view>
+        <navigator url="../my_cultivate/my_cultivate?title=0" hover-class="none" class="my-footer-left plus"><text class="iconfont icon-anonymous-iconfont"></text>添加培训经历</navigator>
     </view>
     <view class='powered'>Powered by gongzuoya.com</view>
 </block>

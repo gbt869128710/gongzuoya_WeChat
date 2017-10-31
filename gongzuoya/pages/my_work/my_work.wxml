@@ -1,0 +1,63 @@
+<!--pages/my_work/my_work.wxml-->
+<block wx:for="{{my}}" wx:for-item="itemname" wx:key="this" wx:if="{{phone==itemname.phone}}">
+<block wx:for="{{itemname.work}}" wx:for-item="work" wx:key="this" wx:if="{{work_id==work.work_id}}">
+	<form bindsubmit="formSubmit">
+		<view class="my" id="{{index}}">
+            <view class="my-center">
+				<view class="my-center-left">公司名称</view>
+				<navigator class="my-center-right" url="../header/header?title={{show?work.firm:''}}" hover-class="none">
+					<text class="sex">{{show?work.firm:'请输入'}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="name" value='{{show?work.firm:"请输入"}}' class="hidden"/>
+				</navigator>
+			</view>
+			<view class="my-center">
+				<view class="my-center-left">你的职位</view>
+				<navigator class="my-center-right" url="../header/header?title={{show?work.job:''}}" hover-class="none">
+					<text class="sex">{{show?work.job:'请输入'}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="job" value='{{show?work.job:"请输入"}}' class="hidden"/>
+				</navigator>
+            </view>
+            <view class="my-center">
+				<view class="my-center-left">你的部门</view>
+				<navigator class="my-center-right" url="../header/header?title={{show?work.section:''}}" hover-class="none">
+					<text class="sex">{{show?work.section:'请输入'}}</text>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="section" value='{{show?work.section:"请输入"}}' class="hidden"/>
+				</navigator>
+            </view>
+			<view class="my-center">
+				<view class="my-center-left">入职时间</view>
+			  	<view class="my-center-right">
+					<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="2017-10" bindchange="bindDateChange">
+						<view class="sex">{{date?date:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="date" value='{{date?date:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+            <view class="my-center">
+				<view class="my-center-left">离职时间</view>
+				<view class="my-center-right">
+					<picker mode="date" fields="month" value="{{datetime}}" start="2015-09" end="2017-10" bindchange="bindDatetime">
+						<view class="sex">{{datetime?datetime:"请选择"}}</view>
+					</picker>
+					<text class="iconfont icon-jiankuohaoxiyou"></text>
+					<input type="text" name="datetime" value='{{datetime?datetime:"请选择"}}' class="hidden"/>
+				</view>
+			</view>
+		</view>
+		<view class="referral">工作内容</view>
+		<view class="referral-textarea">
+			<textarea value="{{show?work.content:''}}" placeholder="请输入工作内容"/>
+      		<input type="text" name="textarea" value='{{show?work.content:""}}' class="hidden"/>	
+		</view>
+		<view class="button">
+			<button type="primary" formType="submit">保存</button>
+			<view class="delete" wx:if="{{show}}">删除此工作经历</view>
+		</view>
+	</form>
+	<view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</block>
+</block>
