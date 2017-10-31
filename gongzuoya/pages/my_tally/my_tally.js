@@ -11,32 +11,74 @@ Page({
     ego: util.ego,
     array:[],
     show: false,
-    arr: [],
     
   },
-  back: function (e) {
+  go: function (e) {
     var that = this
-    // app.cityid=e.target.dataset.id
+    console.log(that.data.inputValue)
+    app.ego_=that.data.inputValue
     wx.navigateBack({
       delta: 1
     })
   },
-  bindKeyInput: function (e) {
+  back: function (e) {
+    var that = this
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  bindKeyfocus: function (e) {
     this.setData({
-      inputValue: e.detail.value,
       show: true,
     })
   },
-  cloose: function (e) {
+  bindKeyInput: function (e) {
+    var arr=[],
+    arr1=[],
+    arr2=[]
+    console.log(e.detail.value)
+    arr2.push(e.detail.value)
+    this.setData({
+      inputValue: arr2,
+    })
+  },
+   cloose: function (e) {
+    var arr=[],
+    arr1=[],
+    arr2=[]
     var that = this
     that.data.ego[e.currentTarget.id].is_check=!that.data.ego[e.currentTarget.id].is_check
+    
+    if(that.data.is_check_length>2){
+      wx.showModal({
+        title: '标签最多有3个',
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+      return false;
+    }
+    for(var i in that.data.ego){ 
+      arr.push(that.data.ego[i].is_check)
+    }
+    for(var j in arr){ 
+      if(arr[j]==true){
+        arr1.push(1)
+        arr2.push(that.data.ego[j].name)
+      }
+    }
     this.setData({
       index: e.currentTarget.id,
-      ego:that.data.ego
+      ego:that.data.ego,
+      inputValue: arr2,
+      is_check_length:arr1.length
     })
-
-    console.log(e.currentTarget.id)
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
